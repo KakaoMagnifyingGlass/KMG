@@ -26,6 +26,7 @@ export const getMessageData = (results: MessageData[]) => {
   let rightBeforeSpeaker;
   let rightBeforeMessageTime;
 
+  console.log(results, "result");
   for (const result of results) {
     const { year, month, day, hour, minute, speaker, keywords } = result;
     const todayDate = `${year}${month}${day}`;
