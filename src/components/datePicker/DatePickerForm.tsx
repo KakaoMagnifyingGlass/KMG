@@ -11,16 +11,17 @@ const CustomInput = styled.input`
   padding: 10px;
   width: 250px;
 `;
+
 const DatePickerForm = () => {
     // dateRange는 [startDate, endDate] 형태의 배열을 값 가짐
     const [dateRange, setDateRange] = useState([null, null]);
     //dateRange 변수를 startDate와 endDate 프로퍼티로 전달
     const [startDate, endDate] = dateRange;
-
-   
+    
   return (
     <div>
       <DatePickerInputContainer> 
+        
              <DatePicker
     // selectsRange 프로퍼티를 true로 설정하면 범위 선택 모드가 활성화되어 startDate와 endDate를 동시에 선택가능
     selectsRange={true}
