@@ -80,6 +80,7 @@ const Attachment = () => {
       return setAttachedFiles([...attachedFiles, [...files]]);
     }
     setAttachedFiles([[...files]]);
+
   };
 
   const handleChangeFile = (event: any) => {
@@ -104,10 +105,13 @@ const Attachment = () => {
         base64 && filteredMessages.push(breakdownTxtFile(base64));
       }
       const messageData = getMessageData(filteredMessages.flat());
-      analyzedMessages.push([...messageData]);
+      analyzedMessages.push([...messageData]); 
+      
     }
+   
 
     dispatch(setAnalyzedMessages(analyzedMessages));
+    
   };
 
   useEffect(() => {}, [attachedFiles]);
