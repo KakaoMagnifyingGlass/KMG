@@ -80,6 +80,7 @@ const Attachment = () => {
       return setAttachedFiles([...attachedFiles, [...files]]);
     }
     setAttachedFiles([[...files]]);
+
   };
 
   const handleChangeFile = (event: any) => {
@@ -104,8 +105,10 @@ const Attachment = () => {
         base64 && filteredMessages.push(breakdownTxtFile(base64));
       }
       const messageData = getMessageData(filteredMessages.flat());
-      analyzedMessages.push([...messageData]);
+      analyzedMessages.push([...messageData]); 
+      
     }
+   
 
     const result = analyzedMessages.map((chatRooms: any) => {
       return chatRooms.map((chatRoom: any) => {
@@ -124,6 +127,7 @@ const Attachment = () => {
     });
 
     dispatch(setAnalyzedMessages(result));
+
   };
 
   useEffect(() => {}, [attachedFiles]);
