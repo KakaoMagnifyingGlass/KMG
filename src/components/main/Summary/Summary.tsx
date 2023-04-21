@@ -1,10 +1,13 @@
 import React from "react";
-import { AnalyzedMessages } from "../Main";
-import { useSelector } from "react-redux";
+import PieChartExample from "./pieGraphForSummary/PieGraphForSummary";
 
 const Summary = () => {
-  const results = useSelector((state: { analyzedMessageSlice: AnalyzedMessages }) => state.analyzedMessageSlice);
-  return <div>서마리</div>;
+  return (
+    <div>
+      서마리
+      <PieChartExample />
+    </div>
+  );
 };
 
 export default Summary;

@@ -65,7 +65,6 @@ export const breakdownTxtFile = (base64: string) => {
   const allMessageData = [];
   try {
     const allLineArray = decodedTextFile.split("\n20");
-
     const filteredMessageLineArray = allLineArray.filter((line) => {
       return filterMessageLine(line);
     });

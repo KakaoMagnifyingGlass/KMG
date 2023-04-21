@@ -46,24 +46,25 @@ const Option = styled.div`
   }
 `;
 
-export interface AnalyzedMessages {
+export type ChatTimes = { [time: string]: number };
+export type KeywordCounts = { [keyword: string]: number };
+export type ReplyTime = {
+  previous: number;
+  difference: number;
+  count: number;
+};
+export type AnalyzedMessage = {
   speaker: string;
-  dates: {
-    date: string;
-    data: {
-      chatTimes: { [key: string]: number };
-      keywordCounts: { [key: string]: number };
-      replyTime: { previous: number; difference: number; count: number };
-    };
-  }[];
-}
+  date: string;
+  chatTimes: ChatTimes;
+  keywordCounts: KeywordCounts;
+  replyTime: ReplyTime;
+};
 
 const Main = () => {
-  const results = useSelector((state: { analyzedMessagesSlice: AnalyzedMessages }) => state.analyzedMessagesSlice);
+  const results = useSelector((state: { analyzedMessagesSlice: AnalyzedMessage }) => state.analyzedMessagesSlice);
 
-  useEffect(() => {
-    console.log(results, "results");
-  }, [results]);
+  useEffect(() => {}, [results]);
 
   return (
     <div>

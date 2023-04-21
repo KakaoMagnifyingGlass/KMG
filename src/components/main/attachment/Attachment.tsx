@@ -107,7 +107,23 @@ const Attachment = () => {
       analyzedMessages.push([...messageData]);
     }
 
-    dispatch(setAnalyzedMessages(analyzedMessages));
+    const result = analyzedMessages.map((chatRooms: any) => {
+      return chatRooms.map((chatRoom: any) => {
+        const speaker = chatRoom.speaker;
+        const dates = chatRoom.dates;
+        return dates.map((date: any) => {
+          return {
+            speaker: speaker,
+            date: date.date,
+            chatTimes: date.data.chatTimes,
+            keywordCounts: date.data.keywordCounts,
+            replyTime: date.data.replyTime,
+          };
+        });
+      });
+    });
+
+    dispatch(setAnalyzedMessages(result));
   };
 
   useEffect(() => {}, [attachedFiles]);
