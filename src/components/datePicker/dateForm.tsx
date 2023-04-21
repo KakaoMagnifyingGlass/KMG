@@ -22,33 +22,31 @@ const DateForm = () => {
 
   // redux에서 분석된 메시지 데이터 가져오기
   const results = useSelector((state: { analyzedMessagesSlice: AnalyzedMessages }) => state.analyzedMessagesSlice);
-console.log(results)
+
 
 // results 변수의 타입을 AnalyzedMessages 타입으로 정의
-type AnalyzedMessages = Array<Array<{ speaker: string, dates: Array<{ date: string, data: any }> }>>; // 예시에 사용된 타입 정의
+type AnalyzedMessages = Array<{
+    speaker: string;
+    dates: Array<DateData>;
+  }>;
+  
   // 분석된 메시지 데이터 사용하기
   // 예시: 시작 날짜와 종료 날짜 출력
-//1
-// if (results && results.length > 0 && results[0][0] && results[0][0].dates && results[0][0].dates.length > 0) {
-//     console.log("startDate:", results[0][1].dates[0].date);
-//     console.log("endDate:", results[0][1].dates.slice(-1)[0].date);
-//   } else {
-//     console.log("Some values are undefined or empty.");
-//   }
-//2
+
 interface DateData {
     date: string;
-    data: any; // data 필드의 타입은 필요에 따라 수정하세요
+    data: {
+      chatTimes: any; // chatTimes 필드의 타입은 필요에 따라 수정하세요
+      keywordCounts: any; // keywordCounts 필드의 타입은 필요에 따라 수정하세요
+      replyTime: any; // replyTime 필드의 타입은 필요에 따라 수정하세요
+    };
   }
-// 모든 대화자의 날짜 배열을 합치기
-const allDates = ([] as DateData[]).concat(...results.map(result => result[0].dates));
+//모든 대화자의 날짜 배열을 합치기
+let dateAll=results.map((result: any)=>{return result.map((data: any)=>{return data.map((date:any)=>date.date)})}).flat().flat().sort((a,b)=>a-b)
+console.log('dateAll',dateAll)
 
-// 가장 이른 날짜와 가장 늦은 날짜 찾기
-const speakerStartDate = allDates.reduce((prev, curr) => (prev.date < curr.date ? prev : curr));
-const speakerEndDate = allDates.reduce((prev, curr) => (prev.date > curr.date ? prev : curr));
-
-console.log("처음 대화 날짜:", speakerStartDate.date);
-console.log("마지막 대화 날짜:", speakerEndDate.date);
+ console.log("처음 대화 날짜:", dateAll[0]);
+ console.log("마지막 대화 날짜:", dateAll[dateAll.length-1]);
   return (
     <div>
       <DatePickerInputContainer>
