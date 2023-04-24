@@ -4,6 +4,7 @@ import "../../style/reset.css";
 import Attachment from "./attachment/Attachment";
 import Summary from "./Summary/Summary";
 import { useSelector } from "react-redux";
+import { LimitTimeData } from "../datePicker/dateForm";
 
 const Container = styled.div`
   width: 600px;
@@ -62,10 +63,16 @@ export type AnalyzedMessage = {
 };
 
 const Main = () => {
-  const results = useSelector((state: { analyzedMessagesSlice: AnalyzedMessage }) => state.analyzedMessagesSlice);
+  const results = useSelector(
+    (state: { analyzedMessagesSlice: AnalyzedMessage }) =>
+      state.analyzedMessagesSlice
+  );
 
   useEffect(() => {}, [results]);
-
+  // const LimitTimeData = useSelector(
+  //   (state: { limitTimeSlice: LimitTimeData }) => state.limitTimeSlice
+  // );
+  // console.log(LimitTimeData);
   return (
     <div>
       <Container>
@@ -75,7 +82,8 @@ const Main = () => {
             Kakao Analytics를 사용하기 위해서는
             {`\n`} 먼저 웹사이트를 등록해야 합니다.
             {`\n`} 웹사이트를 등록하려면,
-            {`\n`} Kakao Analytics 콘솔에 로그인한 후{`\n`} "웹사이트 추가" 버튼을 클릭합니다.
+            {`\n`} Kakao Analytics 콘솔에 로그인한 후{`\n`} "웹사이트 추가"
+            버튼을 클릭합니다.
             {`\n`} 그런 다음, 웹사이트의 이름,
             {`\n`} URL, 카테고리 등을 입력하고 등록합니다.
             {`\n`}

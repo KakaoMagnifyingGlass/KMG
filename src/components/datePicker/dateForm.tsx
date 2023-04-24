@@ -15,10 +15,10 @@ const CustomInput = styled.input`
 `;
 // 타입 지정
 export type LimitTimeData = {
-  startDate: string;
-  endDate: string;
-  startDateSpeaker: string;
-  endDateSpeaker: string;
+  startDate: null;
+  endDate: null;
+  startDateSpeaker: never[];
+  endDateSpeaker: never[];
 };
 const DateForm = () => {
   const dispatch = useDispatch();
@@ -66,9 +66,9 @@ const DateForm = () => {
 
   console.log("처음 대화 날짜:", dateAll[0]);
   console.log("마지막 대화 날짜:", dateAll[dateAll.length - 1]);
-  // dispatch(
-  //   setLimitTime([{ startDate, endDate, startDateSpeaker, endDateSpeaker }])
-  // );
+  dispatch(
+    setLimitTime([{ startDate, endDate, startDateSpeaker, endDateSpeaker }])
+  );
   useEffect(() => {
     const start = dateAll[0];
     const end = dateAll[dateAll.length - 1];
