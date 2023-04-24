@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
@@ -19,7 +19,8 @@ const DateForm = () => {
   const [dateRange, setDateRange] = useState([null, null]);
   //dateRange 변수를 startDate와 endDate 프로퍼티로 전달
   const [startDate, endDate] = dateRange;
-
+const [startDateSpeaker,setStartDateSpeaker]=useState([])
+const [endDateSpeaker,setEndDateSpeaker]=useState([])
   // redux에서 분석된 메시지 데이터 가져오기
   const results = useSelector((state: { analyzedMessagesSlice: AnalyzedMessages }) => state.analyzedMessagesSlice);
 
@@ -41,12 +42,25 @@ interface DateData {
       replyTime: any; // replyTime 필드의 타입은 필요에 따라 수정하세요
     };
   }
-//모든 대화자의 날짜 배열을 합치기
-let dateAll=results.map((result: any)=>{return result.map((data: any)=>{return data.map((date:any)=>date.date)})}).flat().flat().sort((a,b)=>a-b)
+// results 배열에서 date.date 값을 추출하여 새로운 배열인 dateAll을 생성
+let dateAll = results.flatMap((result: any) => result.flatMap((data: any) => data.map((date: any) => date.date)))
+    .sort((a, b) => a - b);
 console.log('dateAll',dateAll)
 
  console.log("처음 대화 날짜:", dateAll[0]);
  console.log("마지막 대화 날짜:", dateAll[dateAll.length-1]);
+
+ useEffect(() => {
+    const start = dateAll[0];
+    const end = dateAll[dateAll.length-1];
+    if (start&&end !== undefined) {
+      setStartDateSpeaker(start.match(/.{1,2}/g));
+      setEndDateSpeaker(end.match(/.{1,2}/g));
+    } else {
+      console.log("입력된 문자열이 정의되어 있지 않습니다.");
+    }
+  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정
+
   return (
     <div>
       <DatePickerInputContainer>
@@ -56,15 +70,19 @@ console.log('dateAll',dateAll)
           startDate={startDate}
           endDate={endDate}
           // dateRange 상태 변수를 업데이트
-          onChange={(update: any) => {
+          onChange={(update: any,event: any) => {
+            event.preventDefault();
+            event.persist();
             setDateRange(update as null[]);
           }}
-          minDate={new Date(2023, 2, 1)} // 현재 날짜 이전의 날짜는 선택할 수 없도록 설정
-          maxDate={new Date(2023, 3, 1)} // 현재 날짜 이후의 날짜는 선택할 수 없도록 설정
+          
+          minDate={new Date(`20${startDateSpeaker[0]}, ${startDateSpeaker[1]}, ${startDateSpeaker[2]}`)} // 현재 날짜 이전의 날짜는 선택할 수 없도록 설정
+          maxDate={new Date(`20${endDateSpeaker[0]}, ${endDateSpeaker[1]}, ${endDateSpeaker[2]}`)} // 현재 날짜 이후의 날짜는 선택할 수 없도록 설정
           // withPortal 프로퍼티를 true로 설정하면 달력이 렌더링되는 위치를 설정,기본값은 false
           withPortal
           isClearable={true}
           customInput={<CustomInput />}
+       
         />
       </DatePickerInputContainer>
     </div>
