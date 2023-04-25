@@ -67,12 +67,13 @@ const Main = () => {
     (state: { analyzedMessagesSlice: AnalyzedMessage }) =>
       state.analyzedMessagesSlice
   );
+  const LimitTimeData = useSelector(
+    (state: { limitTimeSlice: LimitTimeData }) => state.limitTimeSlice
+  );
+  // useEffect(() => {
+  //   console.log(LimitTimeData, "LimitTimeData");
+  // }, [results]);
 
-  useEffect(() => {}, [results]);
-  // const LimitTimeData = useSelector(
-  //   (state: { limitTimeSlice: LimitTimeData }) => state.limitTimeSlice
-  // );
-  // console.log(LimitTimeData);
   return (
     <div>
       <Container>
