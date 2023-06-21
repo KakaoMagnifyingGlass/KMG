@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import FloatingMenu from "./components/organisms/FloatingMenu";
 import Wrapper from "./components/wrapper/Wrapper";
 import GlobalStyle from "./style/GlobalStyles";
-import Nav from "./components/sections/Nav";
+import Navigation from "./components/sections/Navigation";
 
 function App() {
   const isDarkMode = useSelector((state: { isDarkModeSlice: boolean }) => state.isDarkModeSlice);
@@ -20,7 +20,7 @@ function App() {
       <GlobalStyle />
       <Wrapper>
         <FloatingMenu />
-        <Nav />
+        <Navigation />
         <Routes>
           <Route path={"/"} element={<MainPage />} />
           <Route path={"/attachment"} element={<AttachmentPage />} />
