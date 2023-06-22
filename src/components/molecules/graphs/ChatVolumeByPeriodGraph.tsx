@@ -117,7 +117,7 @@ const ChatVolumeByPeriodGraph = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" fontSize={12} tick={customTickColor(isDarkMode)} />
           <YAxis fontSize={12} tick={customTickColor(isDarkMode)} />
-          <Tooltip />
+          <Tooltip contentStyle={{ fontSize: "1.6rem" }} />
           {/* <Legend /> */}
           {chatSpeakers.map((speaker: string, index: number) => {
             return (

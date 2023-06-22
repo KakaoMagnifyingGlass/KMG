@@ -220,7 +220,7 @@ const ReplySpeedGraph = () => {
           <YAxis yAxisId="left" fontSize={12} tick={customTickColor(isDarkMode)} />
           <YAxis yAxisId="right" orientation="right" fontSize={12} tick={customTickColor(isDarkMode)} />
 
-          <Tooltip />
+          <Tooltip contentStyle={{ fontSize: "1.6rem" }} />
           {/* <Legend /> */}
           <Bar yAxisId="right" dataKey="답장횟수" barSize={20} fill="#8884d8" fillOpacity={0.85} />
           <ReferenceLine

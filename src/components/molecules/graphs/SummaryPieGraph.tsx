@@ -213,7 +213,7 @@ const SummaryPieGraph = () => {
               );
             })}
           </Pie>
-          <Tooltip />
+          <Tooltip contentStyle={{ fontSize: "1.6rem" }} />
         </PieChart>
       </ResponsiveContainer>{" "}
       <ArrowIcon

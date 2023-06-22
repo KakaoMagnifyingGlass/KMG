@@ -60,7 +60,7 @@ const renderTooltipContent = (o: any) => {
   const { payload, label } = o;
   const total = payload.reduce((result: any, entry: { value: any }) => result + entry.value, 0);
   return (
-    <TooltipBox className="customized-tooltip-content">
+    <TooltipBox className="customized-tooltip-content" style={{ fontSize: "1.6rem" }}>
       <p className="total">{`${label} (Total: ${total})`}</p>
       <ul className="list">
         {payload.map((entry: { color: any; name: any; value: number }, index: any) => (

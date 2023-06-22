@@ -192,7 +192,7 @@ const ChatRoomCompareGraph = () => {
           );
         })}
         {/* <Legend iconType="line" /> */}
-        <Tooltip />
+        <Tooltip contentStyle={{ fontSize: "1.6rem" }} />
       </RadarChart>
     </ResponsiveContainer>
   );

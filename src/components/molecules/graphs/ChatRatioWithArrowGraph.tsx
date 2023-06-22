@@ -122,7 +122,7 @@ const ChatRatioWithArrowGraph = () => {
   return (
     <div style={{ width: "100%" }}>
       <PieChart width={110 * scale} height={60 * scale}>
-        <Tooltip />
+        <Tooltip contentStyle={{ fontSize: "1.6rem" }} />
         <Pie
           dataKey="value"
           startAngle={180}

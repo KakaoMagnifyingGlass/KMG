@@ -142,7 +142,7 @@ const ChatVolumeByHourlyGraph = () => {
       const data = payload[0]?.payload;
 
       return (
-        <TooltipBox>
+        <TooltipBox style={{ fontSize: "1.6rem" }}>
           <p>
             {data.hour}
             <span>시</span>
