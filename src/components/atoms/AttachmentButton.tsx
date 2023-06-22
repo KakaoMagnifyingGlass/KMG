@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import BlueButton from "./BlueButton";
 
 const AttachmentButtonBox = styled.div`
   display: inline-block;
@@ -14,11 +15,22 @@ const FileInput = styled.input`
 `;
 
 const UnderlineP = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  color: ${(props) => props.theme.mainBlue};
-  text-decoration: underline;
+  color: #fff;
+  background: ${(props) => props.theme.mainBlue};
+  padding: 1.5rem 4rem;
+  border-radius: 5px;
+  transition: 0.3s;
   cursor: pointer;
+
+  @media (max-width: 1024px) {
+    padding: 1.5rem 3rem;
+  }
+
+  &:hover {
+    background: ${(props) => props.theme.mainBlueHover};
+  }
 `;
 
 interface AttachmentButtonProps {
