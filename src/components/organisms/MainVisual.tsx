@@ -96,11 +96,10 @@ const MainVisual = ({ onMoveToFunctionCard }: MainVisualProps) => {
           <MainTitle fontSize="4.8rem" fontWeight="700">
             카카오돋보기 2023
           </MainTitle>
-          <SubTitle fontSize="2.6rem">
-            콘솔, PC 또는 클라우드에서 수백 개의 고품질 게임을 즐기세요.
-          </SubTitle>
+          <SubTitle fontSize="2.6rem">혁신과 창의로 미래를 연결하는 카카오돋보기</SubTitle>
           <ContentText fontSize="1.6rem">
-            구독은 Microsoft 계정을 통해 취소하지 않는 한 자동 연장됩니다.
+            분석된 정보는 시각적으로 나타내어지며 그래프, 차트, 통계 표 등의 형태로 사용자에게
+            제공됩니다.
           </ContentText>
         </LogoBox>
         <BlueButton onClick={() => navigate("/attachment")}>GET STARTED</BlueButton>
