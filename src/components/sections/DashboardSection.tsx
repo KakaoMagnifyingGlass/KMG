@@ -10,6 +10,7 @@ import GraphDisplay from "../organisms/GraphDisplay";
 import DashboardHeaderContent from "../molecules/DashboardHeaderContent";
 import { setVolumeHourlyBoxSize } from "../../store/reducer/volumeHourlyBoxSizeSlice";
 import SpeakerSelect from "../molecules/SpeakerSelect";
+import { setIsModalVisible } from "../../store/reducer/isModalVisibleSlice";
 
 const DashboardSectionContainer = styled.div`
   padding: 10px;
@@ -128,6 +129,9 @@ const ModalBox = styled.div`
 const DashboardSection = () => {
   const dispatch = useDispatch();
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
   const analyzedMessages = useSelector(
     (state: { analyzedMessagesSlice: AnalyzedMessage[] }) => state.analyzedMessagesSlice
   );
@@ -142,14 +146,11 @@ const DashboardSection = () => {
   );
 
   const [currentModalData, modalSetProps] = useState<any>();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const speakers: string[][] = getSpeakers(analyzedMessages);
   const chatTimes: ChatTimes[][][] = getChatTimes(analyzedMessages);
   const totalChatCounts: number[] = getTotalChatCounts(chatTimes);
-
-  useEffect(() => {
-    scrollToEvent(0, "auto");
-  }, []);
 
   const HeaderData = [
     {
@@ -169,15 +170,16 @@ const DashboardSection = () => {
     },
   ];
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
   if (!isModalVisible && containerRef?.current?.offsetHeight) {
     dispatch(
       setVolumeHourlyBoxSize([containerRef?.current?.offsetWidth, containerRef?.current?.offsetHeight])
     );
   }
 
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    dispatch(setIsModalVisible(false));
+    scrollToEvent(0, "auto");
+  }, []);
 
   useEffect(() => {
     if (modalRef?.current?.offsetHeight) {
@@ -188,9 +190,7 @@ const DashboardSection = () => {
         ])
       );
     }
-  }, [isModalVisible]);
-
-  // const modalSetProps = { setIsModalVisible, modalSetProps };
+  }, []);
 
   return (
     <DashboardSectionContainer>

@@ -108,6 +108,12 @@ const DetailPage = () => {
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    scrollToEvent(0, "auto");
+  }, []);
+
   useEffect(() => {
     if (modalRef?.current?.offsetHeight) {
       dispatch(
@@ -119,11 +125,6 @@ const DetailPage = () => {
     }
   }, []);
 
-  useEffect(() => {
-    scrollToEvent(0, "auto");
-  }, []);
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
