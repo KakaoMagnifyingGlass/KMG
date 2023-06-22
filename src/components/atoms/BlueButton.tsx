@@ -18,9 +18,9 @@ const BlueButtonStyle = styled.button`
   border: none;
   cursor: pointer;
 
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     width: 170px;
-    font-size: 12px;
+    font-size: 14px;
   }
   &:hover {
     background: ${(props) => props.theme.mainBlueHover};
