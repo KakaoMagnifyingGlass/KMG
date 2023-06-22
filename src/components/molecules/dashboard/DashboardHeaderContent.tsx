@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Span from "../atoms/Span";
+import Span from "../../atoms/Span";
 
 const HeaderContentBox = styled.div`
   display: flex;

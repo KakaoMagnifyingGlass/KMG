@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { LimitTimeData } from "../../components/organisms/DatePickerCalendar";
+import { LimitTimeData } from "../../components/organisms/dashboard/DatePickerCalendar";
 
 const initialState: LimitTimeData[] = [];
 

@@ -15,7 +15,7 @@ import { getChatTimes, getDates, getSpeakers } from "../../../module/common/getP
 import { getNotDuplicatedChatDates } from "./ChatVolumeByPeriodGraph";
 import { colorsForGraphArray, customTickColor } from "../../../module/common/colorsForGraphArray";
 import styled from "styled-components";
-import NavigatorContainer from "../NavigatorContainer";
+import NavigatorContainer from "../dashboard/GraphNavigatorContainer";
 
 const TooltipBox = styled.div`
   border: 1px solid #ddd;

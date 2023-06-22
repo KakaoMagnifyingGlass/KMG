@@ -1,16 +1,16 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import AttachedFileList from "../molecules/AttachedFileList";
-import BlueButton from "../atoms/BlueButton";
-import ScrollIndicator from "../molecules/ScrollIndicator";
-import FileDrop from "../organisms/FileDrop";
+import AttachedFileList from "../../molecules/attachment/AttachedFileList";
+import BlueButton from "../../atoms/BlueButton";
+import ScrollIndicator from "../../molecules/ScrollIndicator";
+import FileDrop from "../../organisms/attachment/FileDrop";
 import {
   AnalyzedMessage,
   Chatroom,
   FileObject,
   MessageInfo,
   OriginMessageData,
-} from "../../@types/index.d";
+} from "../../../@types/index.d";
 
 import {
   breakdownTxtFileAndroid,
@@ -18,18 +18,18 @@ import {
   breakdownTxtFileMacOS,
   breakdownTxtFileWindow,
   readAsDataURL,
-} from "../../module/core/breakdownTxtFile";
-import { getMessageData } from "../../module/core/getMessageData";
+} from "../../../module/core/breakdownTxtFile";
+import { getMessageData } from "../../../module/core/getMessageData";
 import { useDispatch, useSelector } from "react-redux";
-import { setAnalyzedMessages } from "../../store/reducer/analyzedMessagesSlice";
-import Span from "../atoms/Span";
+import { setAnalyzedMessages } from "../../../store/reducer/analyzedMessagesSlice";
+import Span from "../../atoms/Span";
 import { useNavigate } from "react-router";
-import scrollToEvent from "../../module/common/scrollToEvent";
-import OsList from "../organisms/OsList";
-import { pushNewlyAttachedFiles } from "../../store/reducer/attachedFileListSlice";
-import { setIsAnalyzedMessagesExist } from "../../store/reducer/isAnalyzedMessagesExistSlice";
-import Paragraph from "../atoms/Paragraph";
-import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
+import scrollToEvent from "../../../module/common/scrollToEvent";
+import { pushNewlyAttachedFiles } from "../../../store/reducer/attachment/attachedFileListSlice";
+import { setIsAnalyzedMessagesExist } from "../../../store/reducer/isAnalyzedMessagesExistSlice";
+import Paragraph from "../../atoms/Paragraph";
+import { FlexColumnCenterDiv } from "../../atoms/FlexDiv";
+import OsList from "../../organisms/attachment/OsList";
 
 const AttachmentSectionBox = styled(FlexColumnCenterDiv)`
   margin: 80px auto 0 auto;

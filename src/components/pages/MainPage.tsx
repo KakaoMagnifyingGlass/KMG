@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import MainVisual from "../organisms/MainVisual";
+import MainVisual from "../organisms/main/MainVisual";
 import styled from "styled-components";
 import scrollToEvent from "../../module/common/scrollToEvent";
 import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
-import MainDescriptionSection from "../sections/MainDescriptionSection";
+import MainDescriptionSection from "../sections/main/MainDescriptionSection";
 
 const MainContainer = styled(FlexColumnCenterDiv)`
   padding: 100px 20px;

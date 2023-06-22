@@ -1,19 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import Span from "../atoms/Span";
-import Icon from "../atoms/Icon";
-import ChatRatioWithArrowGraph from "../molecules/graphs/ChatRatioWithArrowGraph";
-import ChatRoomCompareGraph from "../molecules/graphs/ChatRoomCompareGraph";
-import ChatVolumeByPeriodGraph from "../molecules/graphs/ChatVolumeByPeriodGraph";
-import ChatRateGraph from "../molecules/graphs/ChatRateGraph";
-import ReplyCountByHourlyGraph from "../molecules/graphs/ReplyCountByHourlyGraph";
-import KeywordChartGraph from "../molecules/graphs/KeywordChartGraph";
-import ReplySpeedGraph from "../molecules/graphs/ReplySpeedGraph";
-import ChatVolumeByHourlyGraph from "../molecules/graphs/ChatVolumeByHourlyGraph";
+import Span from "../../atoms/Span";
+import Icon from "../../atoms/Icon";
+import ChatRatioWithArrowGraph from "../../molecules/graphs/ChatRatioWithArrowGraph";
+import ChatRoomCompareGraph from "../../molecules/graphs/ChatRoomCompareGraph";
+import ChatVolumeByPeriodGraph from "../../molecules/graphs/ChatVolumeByPeriodGraph";
+import ChatRateGraph from "../../molecules/graphs/ChatRateGraph";
+import ReplyCountByHourlyGraph from "../../molecules/graphs/ReplyCountByHourlyGraph";
+import KeywordChartGraph from "../../molecules/graphs/KeywordChartGraph";
+import ReplySpeedGraph from "../../molecules/graphs/ReplySpeedGraph";
+import ChatVolumeByHourlyGraph from "../../molecules/graphs/ChatVolumeByHourlyGraph";
 import { CgMaximize } from "react-icons/cg";
-import { setIsModalVisible } from "../../store/reducer/isModalVisibleSlice";
-import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
+import { FlexColumnCenterDiv } from "../../atoms/FlexDiv";
+import { setIsModalVisible } from "../../../store/reducer/isModalVisibleSlice";
 
 const graphContentData = [
   {

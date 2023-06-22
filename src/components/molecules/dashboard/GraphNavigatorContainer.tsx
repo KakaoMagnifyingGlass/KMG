@@ -9,6 +9,7 @@ const NavigatorContainerStyle = styled.div`
   height: 100%;
   width: 100%;
   z-index: -1;
+  background: #f00;
 `;
 
 const NavigatorContainer = ({ children }: { children: React.ReactNode }) => {

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Span from "../atoms/Span";
-import Icon from "../atoms/Icon";
-import ChatRatioWithArrowGraph from "../molecules/graphs/ChatRatioWithArrowGraph";
-import SpeakerSelect from "../molecules/SpeakerSelect";
+import Span from "../../atoms/Span";
+import Icon from "../../atoms/Icon";
+import ChatRatioWithArrowGraph from "../../molecules/graphs/ChatRatioWithArrowGraph";
+import SpeakerSelect from "../../molecules/dashboard/SpeakerSelect";
 import { useLocation } from "react-router";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { AnalyzedMessage } from "../../@types/index.d";
-import { getDates } from "../../module/common/getProperties";
-import { setIsModalVisible } from "../../store/reducer/isModalVisibleSlice";
-import { graphContentData } from "../pages/DetailPage";
+import { AnalyzedMessage } from "../../../@types/index.d";
+import { getDates } from "../../../module/common/getProperties";
+import { setIsModalVisible } from "../../../store/reducer/isModalVisibleSlice";
+import { graphContentData } from "../../pages/DetailPage";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { FlexCenterDiv } from "../atoms/FlexDiv";
-import Paragraph from "../atoms/Paragraph";
+import { FlexCenterDiv } from "../../atoms/FlexDiv";
+import Paragraph from "../../atoms/Paragraph";
 
 const ModalGraphBox = styled.div`
   padding: 20px 20px 30px 20px;

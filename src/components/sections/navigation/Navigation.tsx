@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsSideMenuChatRoom } from "../../store/reducer/isSideMenuChatRoomSelectSlice";
-import NavHead from "../organisms/Navigation/NavHead";
-import NavSideMenu from "../organisms/Navigation/NavSide";
-import { darkTheme } from "../../style/Theme";
+import { setIsSideMenuChatRoom } from "../../../store/reducer/isSideMenuChatRoomSelectSlice";
+import NavHead from "../../organisms/navigation/NavHead";
+import NavSideMenu from "../../organisms/navigation/NavSide";
+import { darkTheme } from "../../../style/Theme";
 
 const NavigationContainer = styled.div`
   position: fixed;

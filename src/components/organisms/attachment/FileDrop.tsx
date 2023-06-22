@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import AttachmentButton from "../atoms/AttachmentButton";
-import Paragraph from "../atoms/Paragraph";
-import Span from "../atoms/Span";
+import AttachmentButton from "../../atoms/AttachmentButton";
+import Paragraph from "../../atoms/Paragraph";
+import Span from "../../atoms/Span";
 import OsList from "./OsList";
-import { useDispatch } from "react-redux";
-import { pushNewlyAttachedFiles } from "../../store/reducer/attachedFileListSlice";
-import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
+import { FlexColumnCenterDiv } from "../../atoms/FlexDiv";
 
 const DropBox = styled(FlexColumnCenterDiv)`
   position: relative;

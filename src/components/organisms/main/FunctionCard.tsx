@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import H2 from "../atoms/H2";
-import H3 from "../atoms/H3";
-import Icon from "../atoms/Icon";
-import Img from "../atoms/Img";
-import Paragraph from "../atoms/Paragraph";
+import H2 from "../../atoms/H2";
+import H3 from "../../atoms/H3";
+import Icon from "../../atoms/Icon";
+import Img from "../../atoms/Img";
+import Paragraph from "../../atoms/Paragraph";
 
 import { FiArrowUp, FiArrowDown } from "react-icons/fi";
 const Container = styled.div`

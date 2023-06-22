@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Paragraph from "../atoms/Paragraph";
-import Img from "../atoms/Img";
+import Paragraph from "../../atoms/Paragraph";
+import Img from "../../atoms/Img";
 import { useNavigate } from "react-router-dom";
-import ScrollIndicator from "../molecules/ScrollIndicator";
-import BlueButton from "../atoms/BlueButton";
-import { FlexCenterDiv } from "../atoms/FlexDiv";
+import { FlexCenterDiv } from "../../atoms/FlexDiv";
+import ScrollIndicator from "../../molecules/ScrollIndicator";
+import BlueButton from "../../atoms/BlueButton";
 import { useSelector } from "react-redux";
 
 const MainVisualContainer = styled(FlexCenterDiv)`
@@ -51,7 +51,9 @@ const AsideBox = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -50px;
+    @media (max-width: 768px) {
+      bottom: 0px;
+    }
   }
 `;
 

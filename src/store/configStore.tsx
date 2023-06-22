@@ -7,7 +7,7 @@ import { nfKeywordCountsSlice } from "./reducer/nfKeywordCountSlice";
 import { mostChattedTimesSlice } from "./reducer/mostChattedTimes";
 import { selectedSpeakerIndexSlice } from "./reducer/selectedSpeakerIndexSlice";
 import { speakersTopNKeywordsSlice } from "./reducer/speakersTopNKeywordsSlice";
-import { attachedFileListSlice } from "./reducer/attachedFileListSlice";
+import { attachedFileListSlice } from "./reducer/attachment/attachedFileListSlice";
 import { selectedOsIndexSlice } from "./reducer/selectedOsIndexSlice";
 import { isAnalyzedMessagesExistSlice } from "./reducer/isAnalyzedMessagesExistSlice";
 import { volumeHourlyBoxSizeSlice } from "./reducer/volumeHourlyBoxSizeSlice";

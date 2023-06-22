@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import Img from "../atoms/Img";
-import Paragraph from "../atoms/Paragraph";
+import Img from "../../atoms/Img";
+import Paragraph from "../../atoms/Paragraph";
 
 const ImageCardBox = styled.div`
   display: flex;

@@ -8,7 +8,7 @@ import { setIsDarkMode } from "../../../store/reducer/isDarkModeSlice";
 import { BsFillBrightnessHighFill, BsFillMoonStarsFill } from "react-icons/bs";
 import { HiMenu } from "react-icons/hi";
 import Icon from "../../atoms/Icon";
-import { NavProps } from "../../sections/Navigation";
+import { NavProps } from "../../sections/navigation/Navigation";
 
 const NavHeadContainer = styled.div`
   margin: 0 auto;

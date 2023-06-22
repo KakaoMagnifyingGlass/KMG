@@ -14,7 +14,7 @@ import {
 import { AnalyzedMessage, ChatTimes } from "../../../@types/index.d";
 import { getChatTimes, getDates, getSpeakers } from "../../../module/common/getProperties";
 import { colorsForGraphArray, customTickColor } from "../../../module/common/colorsForGraphArray";
-import NavigatorContainer from "../NavigatorContainer";
+import NavigatorContainer from "../dashboard/GraphNavigatorContainer";
 
 type StackBarData = {
   name: string;

@@ -1,10 +1,10 @@
 import React, { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { AnalyzedMessage } from "../../@types/index.d";
-import { getSpeakers } from "../../module/common/getProperties";
-import { setSelectedSpeakerIndex } from "../../store/reducer/selectedSpeakerIndexSlice";
-import Span from "../atoms/Span";
+import { AnalyzedMessage } from "../../../@types/index.d";
+import { getSpeakers } from "../../../module/common/getProperties";
+import { setSelectedSpeakerIndex } from "../../../store/reducer/selectedSpeakerIndexSlice";
+import Span from "../../atoms/Span";
 
 const SpeakerSelectBox = styled.div<{ alignItems?: string }>`
   display: flex;

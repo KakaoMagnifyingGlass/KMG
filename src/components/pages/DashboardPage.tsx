@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollToEvent from "../../module/common/scrollToEvent";
-import DashboardSection from "../sections/DashboardSection";
-import DashboardSideMenu from "../sections/DashboardSideMenu";
+import DashboardSection from "../sections/dashboard/DashboardSection";
+import DashboardSideMenu from "../sections/dashboard/DashboardSideMenu";
 
 const DashboardBox = styled.div`
   margin-top: 80px;

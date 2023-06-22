@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Icon from "../atoms/Icon";
-import Paragraph from "../atoms/Paragraph";
-import { FileObject } from "../../@types/index.d";
+import Icon from "../../atoms/Icon";
+import Paragraph from "../../atoms/Paragraph";
+import { FileObject } from "../../../@types/index.d";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAttachedFileArray } from "../../store/reducer/attachedFileListSlice";
+import { deleteAttachedFileArray } from "../../../store/reducer/attachment/attachedFileListSlice";
 import { MdClose } from "react-icons/md";
 
 const FileUlBox = styled.ul`

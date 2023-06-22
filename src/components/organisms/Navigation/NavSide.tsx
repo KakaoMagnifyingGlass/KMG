@@ -6,9 +6,9 @@ import { HiMenu } from "react-icons/hi";
 import Icon from "../../atoms/Icon";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import Span from "../../atoms/Span";
-import DashboardSideMenu from "../../sections/DashboardSideMenu";
+import DashboardSideMenu from "../../sections/dashboard/DashboardSideMenu";
 import { useSelector } from "react-redux";
-import { NavProps } from "../../sections/Navigation";
+import { NavProps } from "../../sections/navigation/Navigation";
 
 const NavSideBox = styled.div<{ isSideMenuChatRoom: boolean }>`
   position: absolute;

@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import scrollToEvent from "../../module/common/scrollToEvent";
-import { AnalyzedMessage, ChatTimes, StringNumberTuple } from "../../@types/index.d";
-import { getChatTimes, getSpeakers } from "../../module/common/getProperties";
-import { getTotalChatCounts } from "../molecules/graphs/SummaryPieGraph";
-import ModalGraph from "../organisms/ModalGraph";
-import GraphDisplay from "../organisms/GraphDisplay";
-import DashboardHeaderContent from "../molecules/DashboardHeaderContent";
-import { setVolumeHourlyBoxSize } from "../../store/reducer/volumeHourlyBoxSizeSlice";
-import SpeakerSelect from "../molecules/SpeakerSelect";
-import { setIsModalVisible } from "../../store/reducer/isModalVisibleSlice";
+import scrollToEvent from "../../../module/common/scrollToEvent";
+import { AnalyzedMessage, ChatTimes, StringNumberTuple } from "../../../@types/index.d";
+import { getChatTimes, getSpeakers } from "../../../module/common/getProperties";
+import { getTotalChatCounts } from "../../molecules/graphs/SummaryPieGraph";
+import ModalGraph from "../../organisms/dashboard/ModalGraph";
+import GraphDisplay from "../../organisms/dashboard/GraphDisplay";
+import DashboardHeaderContent from "../../molecules/dashboard/DashboardHeaderContent";
+import { setVolumeHourlyBoxSize } from "../../../store/reducer/volumeHourlyBoxSizeSlice";
+import SpeakerSelect from "../../molecules/dashboard/SpeakerSelect";
+import { setIsModalVisible } from "../../../store/reducer/isModalVisibleSlice";
 
 const DashboardSectionContainer = styled.div`
   padding: 10px;
