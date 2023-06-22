@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
-  gap: 20px;
+  gap: 25px;
 
   @media (max-width: 768px) {
     margin: 50px 0px;
@@ -21,14 +21,14 @@ const Container = styled.div`
 `;
 
 const CardBox = styled.div<{ darkMode?: boolean }>`
-  padding: 20px;
-  width: calc((100% / 3) - (20 * 2px / 3));
+  padding: 30px;
+  width: calc((100% / 3) - (25 * 2px / 3));
   > * {
     align-items: start;
     text-align: start;
   }
   color: ${(props) => props.theme.mainText};
-  background: ${(props) => props.theme.mainWhite};
+  background: ${(props) => props.theme.modalBackground};
   border-radius: 10px;
   transition: 0.3s;
   box-shadow: ${(props) => (props.darkMode ? `none` : `2px 0px 10px 0px #ddd`)};
@@ -40,10 +40,10 @@ const CardBox = styled.div<{ darkMode?: boolean }>`
   }
 
   @media (max-width: 1200px) {
-    width: calc((100% / 2) - (20 * 1px / 2));
+    width: calc((100% / 2) - (25 * 1px / 2));
   }
   @media (max-width: 768px) {
-    width: calc((100% / 1) - (20 * 0px / 1));
+    width: calc((100% / 1) - (25 * 0px / 1));
   }
 `;
 
@@ -54,14 +54,14 @@ const DescriptionBox = styled(FlexColumnCenterDiv)`
 `;
 
 const Title = styled(H2)`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 26px;
   font-weight: 500;
 `;
 
 const SubTitle = styled(H3)`
+  margin-bottom: 17px;
   font-size: 17px;
-  margin-bottom: 5px;
 `;
 
 const functionCardData = [

@@ -94,12 +94,11 @@ const MainVisual = ({ onMoveToFunctionCard }: MainVisualProps) => {
       <AsideBox>
         <LogoBox>
           <MainTitle fontSize="4.8rem" fontWeight="700">
-            카카오돋보기 2023
+            카카오돋보기 2080
           </MainTitle>
-          <SubTitle fontSize="2.6rem">혁신과 창의로 미래를 연결하는 카카오돋보기</SubTitle>
+          <SubTitle fontSize="2.6rem">20대 카톡 80대까지 간다</SubTitle>
           <ContentText fontSize="1.6rem">
-            분석된 정보는 시각적으로 나타내어지며 그래프, 차트, 통계 표 등의 형태로 사용자에게
-            제공됩니다.
+            분석된 정보는 시각적으로 나타내어지며 그래프, 차트 등의 형태로 사용자에게 제공됩니다.
           </ContentText>
         </LogoBox>
         <BlueButton onClick={() => navigate("/attachment")}>GET STARTED</BlueButton>
