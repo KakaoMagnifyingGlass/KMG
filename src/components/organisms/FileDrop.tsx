@@ -33,7 +33,7 @@ const DropBox = styled(FlexColumnCenterDiv)`
 `;
 
 const AttachmentBox = styled.div`
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   display: flex;
   gap: 5px;
 `;
