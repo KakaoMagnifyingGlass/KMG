@@ -4,7 +4,7 @@ import BlueButton from "../atoms/BlueButton";
 import Paragraph from "../atoms/Paragraph";
 import ThreeImages, { CardData } from "../organisms/ThreeImages";
 import scrollToEvent from "../../module/common/scrollEvent";
-import { FlexColumnCenterDiv } from "../styleComponents/FlexDiv";
+import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
 
 const AttachDescriptionBox = styled(FlexColumnCenterDiv)`
   padding: 80px 0;

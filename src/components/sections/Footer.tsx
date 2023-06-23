@@ -4,7 +4,7 @@ import Span from "../atoms/Span";
 import { BsGithub, BsEnvelope } from "react-icons/bs";
 import Icon from "../atoms/Icon";
 import Anchor from "../atoms/Anchor";
-import { FlexCenterDiv, FlexColumnCenterDiv } from "../styleComponents/FlexDiv";
+import { FlexCenterDiv, FlexColumnCenterDiv } from "../atoms/FlexDiv";
 
 const FooterContainer = styled.div`
   background: ${(props) => props.theme.footerBackground};

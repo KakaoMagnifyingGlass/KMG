@@ -6,7 +6,7 @@ import Span from "../atoms/Span";
 import OsList from "./OsList";
 import { useDispatch } from "react-redux";
 import { pushNewlyAttachedFiles } from "../../store/reducer/attachedFileListSlice";
-import { FlexColumnCenterDiv } from "../styleComponents/FlexDiv";
+import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
 
 const DropBox = styled(FlexColumnCenterDiv)`
   position: relative;

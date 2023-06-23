@@ -12,7 +12,7 @@ import { getDates } from "../../module/common/getProperties";
 import { setIsModalVisible } from "../../store/reducer/isModalVisibleSlice";
 import { graphContentData } from "../pages/DetailPage";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { FlexCenterDiv } from "../styleComponents/FlexDiv";
+import { FlexCenterDiv } from "../atoms/FlexDiv";
 import Paragraph from "../atoms/Paragraph";
 
 const ModalGraphBox = styled.div`

@@ -29,7 +29,7 @@ import OsList from "../organisms/OsList";
 import { pushNewlyAttachedFiles } from "../../store/reducer/attachedFileListSlice";
 import { setIsAnalyzedMessagesExist } from "../../store/reducer/isAnalyzedMessagesExistSlice";
 import Paragraph from "../atoms/Paragraph";
-import { FlexColumnCenterDiv } from "../styleComponents/FlexDiv";
+import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
 
 const AttachmentSectionBox = styled(FlexColumnCenterDiv)`
   margin: 80px auto 0 auto;

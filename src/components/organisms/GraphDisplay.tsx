@@ -13,7 +13,7 @@ import ReplySpeedGraph from "../molecules/graphs/ReplySpeedGraph";
 import ChatVolumeByHourlyGraph from "../molecules/graphs/ChatVolumeByHourlyGraph";
 import { CgMaximize } from "react-icons/cg";
 import { setIsModalVisible } from "../../store/reducer/isModalVisibleSlice";
-import { FlexColumnCenterDiv } from "../styleComponents/FlexDiv";
+import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
 
 const graphContentData = [
   {
