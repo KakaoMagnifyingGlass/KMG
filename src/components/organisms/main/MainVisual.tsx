@@ -10,15 +10,16 @@ import { FlexCenterDiv } from "../../atoms/FlexDiv";
 import FunctionCard from "./FunctionCard";
 
 const MainVisualContainer = styled(FlexCenterDiv)`
+  position: relative;
   width: 100%;
   max-width: 1200px;
   height: calc(100vh - 70px);
-  position: relative;
   text-align: start;
 
   @media (max-width: 768px) {
+    padding: 50px 0 0;
     max-width: 808px;
-    padding: 50px 0px 0;
+    height: auto;
     flex-direction: column;
   }
   @media (max-width: 480px) {
@@ -40,7 +41,7 @@ const AsideBox = styled.div`
     text-align: center;
   }
   > :nth-child(1) {
-    margin-bottom: 30px;
+    margin-bottom: 80px;
   }
   > :nth-child(2) {
     display: inline-block;
