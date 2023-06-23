@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
 import AttachmentSection from "../sections/attachment/AttachmentSection";
 import AttachmentDescriptionSection from "../sections/attachment/AttachDescriptionSection";
 import scrollToEvent from "../../module/common/scrollToEvent";
