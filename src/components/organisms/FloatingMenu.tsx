@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import scrollToEvent from "../../module/common/scrollEvent";
+import scrollToEvent from "../../module/common/scrollToEvent";
 import Icon from "../atoms/Icon";
 import { FiArrowUp } from "react-icons/fi";
 import { BsShareFill } from "react-icons/bs";

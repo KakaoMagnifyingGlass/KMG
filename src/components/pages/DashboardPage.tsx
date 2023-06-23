@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import scrollToEvent from "../../module/common/scrollEvent";
+import scrollToEvent from "../../module/common/scrollToEvent";
 import DashboardSection from "../sections/DashboardSection";
 import DashboardSideMenu from "../sections/DashboardSideMenu";
 

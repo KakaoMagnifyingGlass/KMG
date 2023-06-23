@@ -24,7 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAnalyzedMessages } from "../../store/reducer/analyzedMessagesSlice";
 import Span from "../atoms/Span";
 import { useNavigate } from "react-router";
-import scrollToEvent from "../../module/common/scrollEvent";
+import scrollToEvent from "../../module/common/scrollToEvent";
 import OsList from "../organisms/OsList";
 import { pushNewlyAttachedFiles } from "../../store/reducer/attachedFileListSlice";
 import { setIsAnalyzedMessagesExist } from "../../store/reducer/isAnalyzedMessagesExistSlice";

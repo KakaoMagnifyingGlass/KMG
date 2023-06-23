@@ -7,7 +7,11 @@ const ImageCardBox = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 500px;
+  height: 100%;
+
+  @media (max-width: 1024px) {
+    height: 500px;
+  }
 
   > :first-child {
     margin-bottom: 10px;

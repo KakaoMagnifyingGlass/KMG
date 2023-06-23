@@ -1,39 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import BlueButton from "../atoms/BlueButton";
 import Paragraph from "../atoms/Paragraph";
 import ThreeImages, { CardData } from "../organisms/ThreeImages";
-import scrollToEvent from "../../module/common/scrollEvent";
-import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
+import scrollToEvent from "../../module/common/scrollToEvent";
+import { FlexCenterDiv, FlexColumnCenterDiv } from "../atoms/FlexDiv";
+import { useLocation } from "react-router";
 
 const AttachDescriptionBox = styled(FlexColumnCenterDiv)`
   padding: 80px 0;
-
-  > * {
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
 `;
 
-const WayParagraph = styled(Paragraph)`
-  margin-bottom: 60px;
-
-  @media (max-width: 480px) {
-    font-size: 1.5em;
-  }
-`;
-
-const ButtonBox = styled.div`
-  padding-bottom: 60px;
-  display: flex;
+const OsButtonBox = styled(FlexCenterDiv)`
   gap: 30px;
-
-  > * {
-    @media (max-width: 480px) {
-      padding: 15px 0;
-      width: 140px;
-    }
+  margin-bottom: 30px;
+  @media (max-width: 480px) {
+    width: calc(100% - 20px);
+    gap: 10px;
   }
+`;
+
+const TitleParagraph = styled(Paragraph)`
+  margin-bottom: 30px;
+  padding: 0 10px;
+`;
+
+const ThreeImagesBox = styled.div`
+  margin-bottom: 15px;
 `;
 
 const mobileCardData = [
@@ -68,16 +61,32 @@ const pcCardData = [
 
 const AttachmentDescriptionSection = () => {
   const [cardData, setCardData] = useState<CardData[]>(pcCardData);
+
+  const location = useLocation();
+  const isDescriptionIndex = location.hash.includes("description");
+
+  const AttachDescriptionBoxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isDescriptionIndex && AttachDescriptionBoxRef.current) {
+      setTimeout(() => {
+        scrollToEvent(AttachDescriptionBoxRef.current!.offsetTop - 50, "smooth");
+      }, 10);
+    }
+  }, [location, isDescriptionIndex]);
+
   return (
-    <AttachDescriptionBox id="attachMethod">
-      <WayParagraph fontSize="24px">
+    <AttachDescriptionBox id="attachMethod" ref={AttachDescriptionBoxRef}>
+      <TitleParagraph fontSize="24px">
         현재 실행하고 있는 기기에서 카카오톡 메시지 내보내기 방법 알아보기
-      </WayParagraph>
-      <ButtonBox>
+      </TitleParagraph>
+      <OsButtonBox>
         <BlueButton onClick={() => setCardData(pcCardData)}>PC</BlueButton>
         <BlueButton onClick={() => setCardData(mobileCardData)}>모바일</BlueButton>
-      </ButtonBox>
-      <ThreeImages srcAndText={cardData} />
+      </OsButtonBox>
+      <ThreeImagesBox>
+        <ThreeImages srcAndText={cardData} />
+      </ThreeImagesBox>
       <BlueButton onClick={() => scrollToEvent(0, "smooth")}>분석하러 가기</BlueButton>
     </AttachDescriptionBox>
   );

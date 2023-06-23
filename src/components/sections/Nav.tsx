@@ -8,11 +8,10 @@ import { setIsDarkMode } from "../../store/reducer/isDarkModeSlice";
 import { BsFillBrightnessHighFill, BsFillMoonStarsFill } from "react-icons/bs";
 import { HiMenu } from "react-icons/hi";
 import Icon from "../atoms/Icon";
-import NavSide from "./NavSide";
+import NavSide from "../organisms/Navigation/NavSide";
 import { setIsSideMenuChatRoom } from "../../store/reducer/isSideMenuChatRoomSelectSlice";
 
 const NavWrapper = styled.div`
-
   position: fixed;
   top: 0;
   width: 100%;
@@ -22,7 +21,6 @@ const NavWrapper = styled.div`
   user-select: none;
   background: ${(props) => props.theme.navBackground};
 `;
-
 
 const NavHeadContainer = styled.div`
   margin: 0 auto;
@@ -160,7 +158,6 @@ const MobileMenuIcon = styled(Icon)`
   cursor: pointer;
 `;
 
-
 const NavSideContainer = styled.div<{ isWideScreen?: Boolean }>`
   display: ${(props) => (props.isWideScreen ? "none" : "block")};
 `;
@@ -234,7 +231,6 @@ const Nav = () => {
   // }, [isSideMenuChatRoom]);
 
   return (
-
     <NavWrapper>
       <NavHeadContainer>
         <MobileMenuBox>
@@ -267,7 +263,12 @@ const Nav = () => {
         </MenuBox>
       </NavHeadContainer>
       <NavSideContainer isWideScreen={isWideScreen}>
-        <NavSide isWideScreen={isWideScreen} />
+        <NavSide
+          closeMenu={closeMenu}
+          isWideScreen={isWideScreen}
+          isDarkMode={false}
+          isAnalyzedMessagesExist={false}
+        />
         <NavSideShadow onClick={closeMenu} isSideMenuVisible={isSideMenuVisible} />
       </NavSideContainer>
     </NavWrapper>
@@ -275,4 +276,3 @@ const Nav = () => {
 };
 
 export default Nav;
-

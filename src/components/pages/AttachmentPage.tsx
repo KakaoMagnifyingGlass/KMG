@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import AttachmentSection from "../sections/AttachmentSection";
 import AttachmentDescriptionSection from "../sections/AttachDescriptionSection";
-import scrollToEvent from "../../module/common/scrollEvent";
+import scrollToEvent from "../../module/common/scrollToEvent";
 import { FlexColumnCenterDiv } from "../atoms/FlexDiv";
 import { useDispatch } from "react-redux";
 import { pushNewlyAttachedFiles } from "../../store/reducer/attachedFileListSlice";

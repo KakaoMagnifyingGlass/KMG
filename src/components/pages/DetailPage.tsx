@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import scrollToEvent from "../../module/common/scrollEvent";
+import scrollToEvent from "../../module/common/scrollToEvent";
 import DashboardSideMenu from "../sections/DashboardSideMenu";
 import ModalGraph from "../organisms/ModalGraph";
 import ChatRoomCompareGraph from "../molecules/graphs/ChatRoomCompareGraph";
@@ -64,7 +64,6 @@ export const graphContentData = [
     p: "대화가 발생한 시간대를 나타냅니다. 이를 통해 대화가 활발히 이루어지는 시간대, 그리고 상대방과의 대화 타이밍을 파악할 수 있습니다.",
   },
 ];
-
 
 const GraphDetailContainer = styled.div`
   position: relative;
