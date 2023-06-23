@@ -48,7 +48,6 @@ const DragFile = styled(FlexColumnCenterDiv)`
   width: 100%;
   height: 100%;
   gap: 20px;
-  background: #f00;
 `;
 
 type DropZoneProps = {
