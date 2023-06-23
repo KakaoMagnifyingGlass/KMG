@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ValueCountPair } from "../../@types/index.d";
+import { ValueCountPair } from "../../../@types/index.d";
 
 const initialState: ValueCountPair[][] = [];
 

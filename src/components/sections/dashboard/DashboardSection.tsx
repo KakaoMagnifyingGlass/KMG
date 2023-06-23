@@ -8,9 +8,9 @@ import { getTotalChatCounts } from "../../molecules/graphs/SummaryPieGraph";
 import ModalGraph from "../../organisms/dashboard/ModalGraph";
 import GraphDisplay from "../../organisms/dashboard/GraphDisplay";
 import DashboardHeaderContent from "../../molecules/dashboard/DashboardHeaderContent";
-import { setVolumeHourlyBoxSize } from "../../../store/reducer/volumeHourlyBoxSizeSlice";
+import { setVolumeHourlyBoxSize } from "../../../store/reducer/dashboard/volumeHourlyBoxSizeSlice";
 import SpeakerSelect from "../../molecules/dashboard/SpeakerSelect";
-import { setIsModalVisible } from "../../../store/reducer/isModalVisibleSlice";
+import { setIsModalVisible } from "../../../store/reducer/dashboard/isModalVisibleSlice";
 
 const DashboardSectionContainer = styled.div`
   padding: 10px;

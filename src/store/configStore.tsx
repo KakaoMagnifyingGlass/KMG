@@ -1,19 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { limitTimeSlice } from "./reducer/limitTimeSlice";
-import { analyzedMessagesSlice } from "./reducer/analyzedMessagesSlice";
-import { selectedRoomIndexSlice } from "./reducer/selectedRoomIndexSlice";
-import { averageReplyTimeSlice } from "./reducer/averageReplyTimeSlice";
-import { nfKeywordCountsSlice } from "./reducer/nfKeywordCountSlice";
-import { mostChattedTimesSlice } from "./reducer/mostChattedTimes";
-import { selectedSpeakerIndexSlice } from "./reducer/selectedSpeakerIndexSlice";
-import { speakersTopNKeywordsSlice } from "./reducer/speakersTopNKeywordsSlice";
+import { limitTimeSlice } from "./reducer/dashboard/limitTimeSlice";
+import { analyzedMessagesSlice } from "./reducer/dashboard/analyzedMessagesSlice";
+import { selectedRoomIndexSlice } from "./reducer/dashboard/selectedRoomIndexSlice";
+import { averageReplyTimeSlice } from "./reducer/dashboard/averageReplyTimeSlice";
+import { nfKeywordCountsSlice } from "./reducer/dashboard/nfKeywordCountSlice";
+import { mostChattedTimesSlice } from "./reducer/dashboard/mostChattedTimes";
+import { selectedSpeakerIndexSlice } from "./reducer/dashboard/selectedSpeakerIndexSlice";
+import { speakersTopNKeywordsSlice } from "./reducer/dashboard/speakersTopNKeywordsSlice";
 import { attachedFileListSlice } from "./reducer/attachment/attachedFileListSlice";
-import { selectedOsIndexSlice } from "./reducer/selectedOsIndexSlice";
-import { isAnalyzedMessagesExistSlice } from "./reducer/isAnalyzedMessagesExistSlice";
-import { volumeHourlyBoxSizeSlice } from "./reducer/volumeHourlyBoxSizeSlice";
-import { isDarkModeSlice } from "./reducer/isDarkModeSlice";
-import { isModalVisibleSlice } from "./reducer/isModalVisibleSlice";
-import { isSideMenuChatRoomSelectSlice } from "./reducer/isSideMenuChatRoomSelectSlice";
+import { selectedOsIndexSlice } from "./reducer/attachment/selectedOsIndexSlice";
+import { isAnalyzedMessagesExistSlice } from "./reducer/dashboard/isAnalyzedMessagesExistSlice";
+import { volumeHourlyBoxSizeSlice } from "./reducer/dashboard/volumeHourlyBoxSizeSlice";
+import { isDarkModeSlice } from "./reducer/common/isDarkModeSlice";
+import { isModalVisibleSlice } from "./reducer/dashboard/isModalVisibleSlice";
+import { isSideMenuChatRoomSelectSlice } from "./reducer/dashboard/isSideMenuChatRoomSelectSlice";
 
 export default configureStore({
   reducer: {

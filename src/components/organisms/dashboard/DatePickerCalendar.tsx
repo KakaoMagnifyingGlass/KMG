@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css"; // react-datepicker의 CSS 파일을 import
-import { setLimitTime } from "../../../store/reducer/limitTimeSlice";
+import { setLimitTime } from "../../../store/reducer/dashboard/limitTimeSlice";
 import { AnalyzedMessage } from "../../../@types/index.d";
 
 const DatePickerInputContainer = styled.div`

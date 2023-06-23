@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { getChatTimes, getReplyTimes, getSpeakers } from "../../../module/common/getProperties";
-import { setSelectedChatRoomIndex } from "../../../store/reducer/selectedRoomIndexSlice";
+import { setSelectedChatRoomIndex } from "../../../store/reducer/dashboard/selectedRoomIndexSlice";
 import {
   AnalyzedMessage,
   ChatTimes,
@@ -10,13 +10,13 @@ import {
   ReplyTime,
   StringNumberTuple,
 } from "../../../@types/index.d";
-import { setAverageReplyTime } from "../../../store/reducer/averageReplyTimeSlice";
+import { setAverageReplyTime } from "../../../store/reducer/dashboard/averageReplyTimeSlice";
 import { reduceAPlusB } from "../../../module/common/reduceAPlusB";
 import { colorsForChatroomArray } from "../../../module/common/colorsForGraphArray";
 import { lightTheme } from "../../../style/Theme";
 import styled from "styled-components";
 import Icon from "../../atoms/Icon";
-import { setMostChattedTimes } from "../../../store/reducer/mostChattedTimes";
+import { setMostChattedTimes } from "../../../store/reducer/dashboard/mostChattedTimes";
 import { BiLeftArrowCircle, BiRightArrowCircle } from "react-icons/bi";
 
 const Container = styled.div`

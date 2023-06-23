@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { StringNumberTuple } from "../../@types/index.d";
+import { StringNumberTuple } from "../../../@types/index.d";
 
 const initialState: StringNumberTuple[] = [];
 

@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Paragraph from "../../atoms/Paragraph";
 import Img from "../../atoms/Img";
 import { useNavigate } from "react-router-dom";
-import { FlexCenterDiv } from "../../atoms/FlexDiv";
-import ScrollIndicator from "../../molecules/ScrollIndicator";
+import ScrollIndicator from "../../molecules/common/ScrollIndicator";
 import BlueButton from "../../atoms/BlueButton";
 import { useSelector } from "react-redux";
+import { FlexCenterDiv } from "../../atoms/FlexDiv";
 
 const MainVisualContainer = styled(FlexCenterDiv)`
   width: 100%;

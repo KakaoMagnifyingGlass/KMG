@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Img from "../../atoms/Img";
 import { useDispatch } from "react-redux";
 import { darkTheme, lightTheme } from "../../../style/Theme";
-import { setIsDarkMode } from "../../../store/reducer/isDarkModeSlice";
+import { setIsDarkMode } from "../../../store/reducer/common/isDarkModeSlice";
 import { BsFillBrightnessHighFill, BsFillMoonStarsFill } from "react-icons/bs";
 import { HiMenu } from "react-icons/hi";
 import Icon from "../../atoms/Icon";

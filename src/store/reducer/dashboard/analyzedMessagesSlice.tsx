@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { AnalyzedMessage } from "../../@types/index.d";
+import { AnalyzedMessage } from "../../../@types/index.d";
 
 const initialState: AnalyzedMessage[][][] = [];
 

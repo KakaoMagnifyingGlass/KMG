@@ -9,11 +9,11 @@ import { AnalyzedMessage, ChatTimes } from "../../../@types/index.d";
 import { getChatTimes, getSpeakers } from "../../../module/common/getProperties";
 import Span from "../../atoms/Span";
 import Paragraph from "../../atoms/Paragraph";
-import { setSelectedChatRoomIndex } from "../../../store/reducer/selectedRoomIndexSlice";
+import { setSelectedChatRoomIndex } from "../../../store/reducer/dashboard/selectedRoomIndexSlice";
 import { Link } from "react-router-dom";
-import { setSelectedSpeakerIndex } from "../../../store/reducer/selectedSpeakerIndexSlice";
+import { setSelectedSpeakerIndex } from "../../../store/reducer/dashboard/selectedSpeakerIndexSlice";
 
-import { setIsSideMenuChatRoom } from "../../../store/reducer/isSideMenuChatRoomSelectSlice";
+import { setIsSideMenuChatRoom } from "../../../store/reducer/dashboard/isSideMenuChatRoomSelectSlice";
 
 const DashboardLayoutBox = styled.div`
   position: sticky;

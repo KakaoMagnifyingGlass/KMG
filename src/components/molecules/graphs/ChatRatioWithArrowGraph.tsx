@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import { AnalyzedMessage } from "../../../@types/index.d";
 import { colorsForGraphArray } from "../../../module/common/colorsForGraphArray";
-import { setSelectedSpeakerIndex } from "../../../store/reducer/selectedSpeakerIndexSlice";
+import { setSelectedSpeakerIndex } from "../../../store/reducer/dashboard/selectedSpeakerIndexSlice";
 import { reduceAPlusB } from "../../../module/common/reduceAPlusB";
 
 const RADIAN = Math.PI / 180;

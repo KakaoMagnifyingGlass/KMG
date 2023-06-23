@@ -6,8 +6,8 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { getKeywordCounts, getSpeakers } from "../../../module/common/getProperties";
 import { KeywordCounts } from "../../../@types/index.d";
 import styled from "styled-components";
-import { setNfKeywordCount } from "../../../store/reducer/nfKeywordCountSlice";
-import { setSpeakersTopNKeywords } from "../../../store/reducer/speakersTopNKeywordsSlice";
+import { setNfKeywordCount } from "../../../store/reducer/dashboard/nfKeywordCountSlice";
+import { setSpeakersTopNKeywords } from "../../../store/reducer/dashboard/speakersTopNKeywordsSlice";
 
 // const KeywordList = styled.li`
 //   display: flex;

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import AttachedFileList from "../../molecules/attachment/AttachedFileList";
 import BlueButton from "../../atoms/BlueButton";
-import ScrollIndicator from "../../molecules/ScrollIndicator";
+import ScrollIndicator from "../../molecules/common/ScrollIndicator";
 import FileDrop from "../../organisms/attachment/FileDrop";
 import {
   AnalyzedMessage,
@@ -21,12 +21,12 @@ import {
 } from "../../../module/core/breakdownTxtFile";
 import { getMessageData } from "../../../module/core/getMessageData";
 import { useDispatch, useSelector } from "react-redux";
-import { setAnalyzedMessages } from "../../../store/reducer/analyzedMessagesSlice";
+import { setAnalyzedMessages } from "../../../store/reducer/dashboard/analyzedMessagesSlice";
 import Span from "../../atoms/Span";
 import { useNavigate } from "react-router";
 import scrollToEvent from "../../../module/common/scrollToEvent";
 import { pushNewlyAttachedFiles } from "../../../store/reducer/attachment/attachedFileListSlice";
-import { setIsAnalyzedMessagesExist } from "../../../store/reducer/isAnalyzedMessagesExistSlice";
+import { setIsAnalyzedMessagesExist } from "../../../store/reducer/dashboard/isAnalyzedMessagesExistSlice";
 import Paragraph from "../../atoms/Paragraph";
 import { FlexColumnCenterDiv } from "../../atoms/FlexDiv";
 import OsList from "../../organisms/attachment/OsList";

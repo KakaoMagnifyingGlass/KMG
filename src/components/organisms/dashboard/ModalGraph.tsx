@@ -9,7 +9,7 @@ import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { AnalyzedMessage } from "../../../@types/index.d";
 import { getDates } from "../../../module/common/getProperties";
-import { setIsModalVisible } from "../../../store/reducer/isModalVisibleSlice";
+import { setIsModalVisible } from "../../../store/reducer/dashboard/isModalVisibleSlice";
 import { graphContentData } from "../../pages/DetailPage";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { FlexCenterDiv } from "../../atoms/FlexDiv";

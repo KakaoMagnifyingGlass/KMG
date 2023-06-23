@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsSideMenuChatRoom } from "../../../store/reducer/isSideMenuChatRoomSelectSlice";
+import { setIsSideMenuChatRoom } from "../../../store/reducer/dashboard/isSideMenuChatRoomSelectSlice";
 import NavHead from "../../organisms/navigation/NavHead";
 import NavSideMenu from "../../organisms/navigation/NavSide";
 import { darkTheme } from "../../../style/Theme";

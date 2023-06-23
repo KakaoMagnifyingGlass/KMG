@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import styled, { keyframes } from "styled-components";
-import Paragraph from "../atoms/Paragraph";
-import { lightTheme } from "../../style/Theme";
-import Icon from "../atoms/Icon";
+import Paragraph from "../../atoms/Paragraph";
+import { lightTheme } from "../../../style/Theme";
+import Icon from "../../atoms/Icon";
 
 const IndicatorBox = styled.div`
   text-align: center;

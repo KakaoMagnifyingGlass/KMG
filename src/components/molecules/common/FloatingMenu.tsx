@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import scrollToEvent from "../../module/common/scrollToEvent";
-import Icon from "../atoms/Icon";
+import scrollToEvent from "../../../module/common/scrollToEvent";
+import Icon from "../../atoms/Icon";
 import { FiArrowUp } from "react-icons/fi";
 import { BsShareFill } from "react-icons/bs";
-import { lightTheme } from "../../style/Theme";
+import { lightTheme } from "../../../style/Theme";
 
 const FloatingMenuContainer = styled.div<{ isFloatingMenuVisible?: boolean }>`
   position: fixed;

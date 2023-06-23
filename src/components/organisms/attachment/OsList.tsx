@@ -2,7 +2,7 @@ import React from "react";
 import Span from "../../atoms/Span";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedOsIndex } from "../../../store/reducer/selectedOsIndexSlice";
+import { setSelectedOsIndex } from "../../../store/reducer/attachment/selectedOsIndexSlice";
 import { AiFillWindows, AiFillApple, AiFillAndroid } from "react-icons/ai";
 import { SiIos } from "react-icons/si";
 import Icon from "../../atoms/Icon";

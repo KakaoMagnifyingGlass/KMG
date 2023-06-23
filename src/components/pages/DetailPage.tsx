@@ -11,7 +11,7 @@ import ReplyCountByHourlyGraph from "../molecules/graphs/ReplyCountByHourlyGraph
 import KeywordChartGraph from "../molecules/graphs/KeywordChartGraph";
 import ReplySpeedGraph from "../molecules/graphs/ReplySpeedGraph";
 import ChatVolumeByHourlyGraph from "../molecules/graphs/ChatVolumeByHourlyGraph";
-import { setVolumeHourlyBoxSize } from "../../store/reducer/volumeHourlyBoxSizeSlice";
+import { setVolumeHourlyBoxSize } from "../../store/reducer/dashboard/volumeHourlyBoxSizeSlice";
 
 export const graphContentData = [
   {

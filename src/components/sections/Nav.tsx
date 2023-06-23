@@ -4,11 +4,11 @@ import { Link, useLocation } from "react-router-dom";
 import Img from "../atoms/Img";
 import { useDispatch, useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "../../style/Theme";
-import { setIsDarkMode } from "../../store/reducer/isDarkModeSlice";
+import { setIsDarkMode } from "../../store/reducer/common/isDarkModeSlice";
 import { BsFillBrightnessHighFill, BsFillMoonStarsFill } from "react-icons/bs";
 import { HiMenu } from "react-icons/hi";
 import Icon from "../atoms/Icon";
-import { setIsSideMenuChatRoom } from "../../store/reducer/isSideMenuChatRoomSelectSlice";
+import { setIsSideMenuChatRoom } from "../../store/reducer/dashboard/isSideMenuChatRoomSelectSlice";
 import NavSide from "../organisms/navigation/NavSide";
 
 const NavWrapper = styled.div`

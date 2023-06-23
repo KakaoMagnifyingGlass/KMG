@@ -8,7 +8,7 @@ import DashboardPage from "./components/pages/DashboardPage";
 import Footer from "./components/sections/footer/Footer";
 import DetailPage from "./components/pages/DetailPage";
 import { useSelector } from "react-redux";
-import FloatingMenu from "./components/molecules/FloatingMenu";
+import FloatingMenu from "./components/molecules/common/FloatingMenu";
 import Wrapper from "./components/wrapper/Wrapper";
 import GlobalStyle from "./style/GlobalStyles";
 import Navigation from "./components/sections/navigation/Navigation";
