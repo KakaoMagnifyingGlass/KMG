@@ -174,7 +174,9 @@ const NavSide: React.FC<NavSideMenuProps> = ({
         <PageLink>
           <Link to="/attachment" onClick={closeMenu}>
             <AnalysisBox>
-              <Span fontWeight="700">분석하기</Span>
+              <Span fontWeight="700" fontSize="2.2rem">
+                분석하기
+              </Span>
               <BsFillArrowRightCircleFill />
             </AnalysisBox>
           </Link>
