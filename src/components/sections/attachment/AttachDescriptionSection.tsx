@@ -4,8 +4,7 @@ import BlueButton from "../../atoms/BlueButton";
 import Paragraph from "../../atoms/Paragraph";
 import ThreeImages, { CardData } from "../../organisms/attachment/ThreeImages";
 import scrollToEvent from "../../../module/common/scrollToEvent";
-import { FlexCenterDiv, FlexColumnCenterDiv } from "../../atoms/FlexDiv";
-
+import { FlexColumnCenterDiv, FlexCenterDiv } from "../../atoms/FlexDiv";
 import { useLocation } from "react-router";
 
 const AttachDescriptionBox = styled(FlexColumnCenterDiv)`

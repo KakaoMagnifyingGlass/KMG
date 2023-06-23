@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSideMenuChatRoom } from "../../../store/reducer/dashboard/isSideMenuChatRoomSelectSlice";
-import NavHead from "../../organisms/navigation/NavHead";
-import NavSideMenu from "../../organisms/navigation/NavSide";
 import { darkTheme } from "../../../style/Theme";
+import NavHead from "../../organisms/Navigation/NavHead";
+import NavSide from "../../organisms/Navigation/NavSide";
 
 const NavigationContainer = styled.div`
   position: fixed;
@@ -66,7 +66,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <NavHead {...navHeadProps} />
-      <NavSideMenu {...navSideProps} />
+      <NavSide {...navSideProps} />
     </NavigationContainer>
   );
 };
