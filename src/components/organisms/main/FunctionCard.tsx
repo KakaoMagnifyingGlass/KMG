@@ -8,29 +8,22 @@ import Img from "../../atoms/Img";
 import Paragraph from "../../atoms/Paragraph";
 
 import { FiArrowUp, FiArrowDown } from "react-icons/fi";
-const Container = styled.div`
-  padding: 100px 0px;
-
-  @media (max-width: 768px) {
-    padding: 50px 20px;
-  }
-`;
 
 const Card = styled.div`
   position: relative;
-  margin: 0 auto;
   display: flex;
-  width: 100%;
-  max-width: 1200px;
-  height: 500px;
-  background: ${(props) => props.theme.mainWhite};
+  height: 350px;
   border-radius: 10px;
   box-shadow: 2px 0px 10px 0px #ddd;
   overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
+    height: 350px;
     margin-top: 100px;
+  }
+  @media (max-width: 400px) {
+    height: 400px;
   }
   &.dark {
     box-shadow: none;
@@ -49,15 +42,14 @@ const SideSlide = styled.div`
 `;
 
 const SideContent = styled.div`
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 100%;
   height: 100%;
   color: ${(props) => props.theme.mainBlack};
   border-right: 1px solid ${(props) => props.theme.mainGray};
-
   @media (max-width: 1200px) {
     background: ${(props) => props.theme.functionArrowWhite};
   }
@@ -82,7 +74,7 @@ const SideContent = styled.div`
     @media (max-width: 768px) {
       display: block;
       font-size: 1.1em;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
   }
   > :nth-child(3) {
@@ -91,6 +83,7 @@ const SideContent = styled.div`
     object-fit: contain;
     @media (max-width: 768px) {
       height: 50%;
+      margin-bottom: 30px;
     }
   }
 
@@ -134,19 +127,18 @@ const MainSlide = styled.div`
 `;
 
 const Description = styled.div<{ fontSize?: string }>`
-  width: 100%;
   height: 100%;
   > :first-child {
-    font-size: ${(props) => props.fontSize || "2.6em"};
+    font-size: ${(props) => props.fontSize || "2em"};
     margin-bottom: 15px;
     font-weight: 500;
   }
   > :nth-child(2) {
-    font-size: ${(props) => props.fontSize || "1.8em"};
+    font-size: ${(props) => props.fontSize || "1.4em"};
     margin-bottom: 25px;
   }
   > :last-child {
-    font-size: ${(props) => props.fontSize || "1.6em"};
+    font-size: ${(props) => props.fontSize || "1.2em"};
     font-weight: 300;
   }
 `;
@@ -175,7 +167,7 @@ const SlideIconBox = styled.div`
 const SlideDownIcon = styled(Icon)`
   border-top-right-radius: 20%;
   border-bottom-right-radius: 20%;
-  transform: translateX(44px);
+  transform: translateX(34px);
 `;
 
 const SlideUpIcon = styled(Icon)`
@@ -248,39 +240,37 @@ const FunctionCard = ({ moveScrollPosition }: Props) => {
   const isDarkMode = useSelector((state: { isDarkModeSlice: boolean }) => state.isDarkModeSlice);
 
   return (
-    <Container ref={moveScrollPosition}>
-      <Card className={` ${isDarkMode ? "dark" : ""}`}>
-        <SideSlide style={{ transform: `translateY(-${activeSlideIndex * 100}%)` }}>
-          {functionCardData.map((data) => (
-            <SideContent>
-              <H2>{data.subject}</H2>
-              <H3 fontSize="24px" lineHeight="1.5">
-                {data.h3}
-              </H3>
-              <Img src={data.img} />
-              <Paragraph>{data.p}</Paragraph>
-            </SideContent>
-          ))}
-        </SideSlide>
-        <MainSlide style={{ transform: `translateY(-${activeSlideIndex * 100}%)` }}>
-          {functionCardData.map((data) => (
-            <Description>
-              <H2>{data.subject}</H2>
-              <H3 lineHeight="1.5">{data.h3}</H3>
-              <Paragraph lineHeight="1.5em">{data.p}</Paragraph>
-            </Description>
-          ))}
-        </MainSlide>
-        <SlideIconBox>
-          <SlideDownIcon fontSize="24px" onClick={() => handleSlideChange("next")}>
-            <FiArrowDown />
-          </SlideDownIcon>
-          <SlideUpIcon fontSize="24px" onClick={() => handleSlideChange("prev")}>
-            <FiArrowUp />
-          </SlideUpIcon>
-        </SlideIconBox>
-      </Card>
-    </Container>
+    <Card className={` ${isDarkMode ? "dark" : ""}`}>
+      <SideSlide style={{ transform: `translateY(-${activeSlideIndex * 100}%)` }}>
+        {functionCardData.map((data) => (
+          <SideContent>
+            <H2>{data.subject}</H2>
+            <H3 fontSize="24px" lineHeight="1.5">
+              {data.h3}
+            </H3>
+            <Img src={data.img} />
+            <Paragraph>{data.p}</Paragraph>
+          </SideContent>
+        ))}
+      </SideSlide>
+      <MainSlide style={{ transform: `translateY(-${activeSlideIndex * 100}%)` }}>
+        {functionCardData.map((data) => (
+          <Description>
+            <H2>{data.subject}</H2>
+            <H3 lineHeight="1.5">{data.h3}</H3>
+            <Paragraph lineHeight="1.5em">{data.p}</Paragraph>
+          </Description>
+        ))}
+      </MainSlide>
+      <SlideIconBox>
+        <SlideDownIcon fontSize="15px" onClick={() => handleSlideChange("next")}>
+          <FiArrowDown />
+        </SlideDownIcon>
+        <SlideUpIcon fontSize="15px" onClick={() => handleSlideChange("prev")}>
+          <FiArrowUp />
+        </SlideUpIcon>
+      </SlideIconBox>
+    </Card>
   );
 };
 

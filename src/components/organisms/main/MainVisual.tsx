@@ -7,6 +7,7 @@ import ScrollIndicator from "../../molecules/common/ScrollIndicator";
 import BlueButton from "../../atoms/BlueButton";
 import { useSelector } from "react-redux";
 import { FlexCenterDiv } from "../../atoms/FlexDiv";
+import FunctionCard from "./FunctionCard";
 
 const MainVisualContainer = styled(FlexCenterDiv)`
   width: 100%;
@@ -110,13 +111,14 @@ const MainVisual = ({ onMoveToFunctionCard }: MainVisualProps) => {
       </AsideBox>
       <ArticleBox>
         <MainVisualImgBox>
-          <Img
+          {/* <Img
             src={
               isDarkMode
                 ? `${process.env.PUBLIC_URL}/images/main/dashboardDark.png`
                 : `${process.env.PUBLIC_URL}/images/main/dashboard.png`
             }
-          />
+          /> */}
+          <FunctionCard />
         </MainVisualImgBox>
       </ArticleBox>
     </MainVisualContainer>
