@@ -12,8 +12,8 @@ import FunctionCard from "./FunctionCard";
 const MainVisualContainer = styled(FlexCenterDiv)`
   width: 100%;
   max-width: 1200px;
+  height: calc(100vh - 70px);
   position: relative;
-  padding: 100px 0px;
   text-align: start;
 
   @media (max-width: 768px) {

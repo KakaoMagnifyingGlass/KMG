@@ -5,10 +5,12 @@ import { lightTheme } from "../../../style/Theme";
 import Icon from "../../atoms/Icon";
 
 const IndicatorBox = styled.div`
-  text-align: center;
+  position: absolute;
+  bottom: 50px;
   margin: 0 auto;
   width: 300px;
   cursor: pointer;
+  text-align: center;
 
   > :first-child {
     margin-bottom: 5px;
