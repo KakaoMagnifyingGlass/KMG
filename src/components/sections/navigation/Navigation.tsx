@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSideMenuChatRoom } from "../../../store/reducer/dashboard/isSideMenuChatRoomSelectSlice";
 import { darkTheme } from "../../../style/Theme";
-import NavHead from "../../organisms/Navigation/NavHead";
-import NavSide from "../../organisms/Navigation/NavSide";
+import NavHead from "../../organisms/navigation/NavHead";
+import NavSide from "../../organisms/navigation/NavSide";
 
 const NavigationContainer = styled.div`
   position: fixed;
