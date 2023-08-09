@@ -32,7 +32,7 @@ const PostPage = () => {
       try {
         const result = await axios.get("/api/posts");
         console.log(`게시물 조회가 완료되었습니다.`);
-        setPosts(result.data.posts);
+        setPosts(result.data.posts.reverse());
         return console.log(result.data.posts);
       } catch (error) {
         console.error(error);

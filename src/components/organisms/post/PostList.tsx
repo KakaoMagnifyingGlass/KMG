@@ -73,7 +73,7 @@ const PostList = ({
         },
       });
 
-      console.log(`${post.title} 게시물 조회가 완료되었습니다.`);
+      console.log(`${result} 게시물 조회가 완료되었습니다.`);
       const postData = result.data.post;
       return postData;
     } catch (error) {
