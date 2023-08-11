@@ -18,17 +18,14 @@ const NonePostContainer = styled.div`
 `;
 
 const PostPage = () => {
-  const userData = useSelector((state: { userLoginDataSlice: UserData }) => state.userLoginDataSlice);
   const accessToken = useSelector(
     (state: { userLoginAccessTokenSlice: AccessToken }) => state.userLoginAccessTokenSlice
   );
 
   const [posts, setPosts] = useState<Post[]>([]);
-  const [currentPost, setCurrentPost] = useState<Post | null>(null);
-  const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
-    const loadPosts = async () => {
+    const loadInitialPosts = async () => {
       try {
         const result = await axios.get("/api/posts");
         console.log(`게시물 조회가 완료되었습니다.`);
@@ -39,36 +36,19 @@ const PostPage = () => {
       }
     };
 
-    (async () => await loadPosts())();
+    (async () => await loadInitialPosts())();
   }, []);
 
-  const PostFormProps = {
+  const postsProps = {
     accessToken,
-    posts,
-    setPosts,
-  };
-
-  const currentPostData = {
-    accessToken,
-    userData,
-    currentPost,
-    setCurrentPost,
-    comments,
-    setComments,
     posts,
     setPosts,
   };
 
   return (
     <PostPageContainer>
-      {/* 게시글작성폼 */}
-      <PostForm {...PostFormProps} />
-      {/* 게시글 */}
-      {posts ? (
-        <PostList {...currentPostData} />
-      ) : (
-        <NonePostContainer>게시물이 없습니다.</NonePostContainer>
-      )}
+      <PostForm {...postsProps} />
+      {posts ? <PostList {...postsProps} /> : <NonePostContainer>게시물이 없습니다.</NonePostContainer>}
     </PostPageContainer>
   );
 };

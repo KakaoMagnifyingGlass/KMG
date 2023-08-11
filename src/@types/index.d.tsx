@@ -105,6 +105,7 @@ export interface Post {
   postId: number;
   title: string;
   userId: string;
+  commentCount: number;
   __v: number;
   _id: string;
 }

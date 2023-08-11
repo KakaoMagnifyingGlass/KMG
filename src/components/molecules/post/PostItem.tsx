@@ -115,14 +115,15 @@ const DeleteButton = styled.button`
 interface PostItemProps {
   post: Post;
   isSameAuthor?: boolean;
-  comments: Comment[];
   accessToken: AccessToken;
+  userData: UserData;
+  comments: Comment[];
+  isSamePost: boolean;
   posts: Post[];
   currentPost: Post | null;
-  userData: UserData;
-  setComments: (comment: Comment[]) => void;
-  setPosts: (post: Post[]) => void;
-  setCurrentPost: (post: Post | null) => void;
+  setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
+  setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
+  setCurrentPost: React.Dispatch<React.SetStateAction<Post | null>>;
 }
 
 const PostItem = ({
@@ -133,15 +134,16 @@ const PostItem = ({
   posts,
   currentPost,
   userData,
+  isSamePost,
   setComments,
   setPosts,
   setCurrentPost,
 }: PostItemProps) => {
-  const [titleEdit, setTitleEdit] = useState("");
-  const [contentEdit, setContentEdit] = useState("");
+  const [titleEdit, setTitleEdit] = useState<string>("");
+  const [contentEdit, setContentEdit] = useState<string>("");
   const [isPrivatePostEdit, setIsPrivatePostEdit] = useState<boolean>(false);
   const [isPostEditing, setIsPostEditing] = useState<boolean>(false);
-  const [comment, setComment] = useState("");
+  const [commentCount, setCommentCount] = useState<number>(post.commentCount);
 
   const clickEditPost = async (e: React.FormEvent<HTMLButtonElement>, post: Post | null) => {
     e.preventDefault();
@@ -191,6 +193,18 @@ const PostItem = ({
     currentPost,
     comments,
     setComments,
+    commentCount,
+    setCommentCount,
+  };
+
+  const commentFormProps = {
+    ...commonData,
+  };
+
+  const commentListProps = {
+    ...commonData,
+    userData,
+    isPostEditing,
   };
 
   const editPostFormProps = {
@@ -227,7 +241,7 @@ const PostItem = ({
                 <CurrentPostTitle>{post.title}</CurrentPostTitle>
                 <CurrentPostContent>{post.content}</CurrentPostContent>
               </CurrentPostInfoBox>
-              {isSameAuthor && (
+              {isSamePost && isSameAuthor && (
                 <PostButtonBox>
                   <EditButton onClick={(e) => clickEditPost(e, currentPost)}>수정</EditButton>
                   <DeleteButton onClick={(e) => deletePost(e, currentPost)}>삭제</DeleteButton>
@@ -236,14 +250,15 @@ const PostItem = ({
             </CurrentPostEditContainer>
           )}
           <CommentIcon>
-            <FaRegComment /> {comments.length}
+            <FaRegComment />
+            {commentCount}
           </CommentIcon>
         </PostInfo>
       </PostContent>
-      {currentPost && currentPost.postId === post.postId && (
+      {currentPost?.postId === post.postId && (
         <>
-          <CommentList {...commonData} userData={userData} isPostEditing={isPostEditing} />
-          <CommentForm {...commonData} comment={comment} setComment={setComment} />
+          <CommentList {...commentListProps} />
+          <CommentForm {...commentFormProps} />
         </>
       )}
     </CurrentPostBox>

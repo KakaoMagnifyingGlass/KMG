@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import styled, { css } from "styled-components";
+import React, { useState } from "react";
+import styled from "styled-components";
 import axios from "axios";
 import { AccessToken, Comment, Post, UserData } from "../../../@types/index.d";
-import CurrentPost from "./CurrentPost";
 import PostItem from "../../molecules/post/PostItem";
-import Loading from "../../molecules/common/Loading";
+import { useSelector } from "react-redux";
 
 const PostListContainer = styled.div`
   display: flex;
@@ -19,15 +18,15 @@ const PostPageTitle = styled.h1`
 
 const PostListBox = styled.ul``;
 
-const PostItemBox = styled.li<{ currentPost: boolean }>`
+const PostItemBox = styled.li<{ isSamePost: boolean }>`
   margin-bottom: 1rem;
   padding: 2rem;
   border: 1px solid #ccc;
   border-radius: 5px;
 
   &:hover {
-    background: ${(props) => (props.currentPost ? "#fff" : "#00000010")};
-    cursor: ${(props) => (props.currentPost ? "auto" : "pointer")};
+    background: ${(props) => (props.isSamePost ? "#fff" : "#00000010")};
+    cursor: ${(props) => (props.isSamePost ? "auto" : "pointer")};
   }
 `;
 
@@ -38,25 +37,16 @@ const NonePostContainer = styled.div`
 
 interface currentPostProps {
   accessToken: AccessToken;
-  userData: UserData;
-  currentPost: Post | null;
-  comments: Comment[];
   posts: Post[];
-  setCurrentPost: (post: Post | null) => void;
-  setComments: (comment: Comment[]) => void;
-  setPosts: (post: Post[]) => void;
+  setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
 }
 
-const PostList = ({
-  accessToken,
-  userData,
-  currentPost,
-  setCurrentPost,
-  comments,
-  setComments,
-  posts,
-  setPosts,
-}: currentPostProps) => {
+const PostList = ({ accessToken, posts, setPosts }: currentPostProps) => {
+  const userData = useSelector((state: { userLoginDataSlice: UserData }) => state.userLoginDataSlice);
+
+  const [currentPost, setCurrentPost] = useState<Post | null>(null);
+  const [comments, setComments] = useState<Comment[]>([]);
+
   const handleClickPost = (post: Post) => {
     // 동일한 포스트를 클릭한 경우에는 viewPost를 다시 동작하지 않도록 함
     if (currentPost?.postId !== post.postId) {
@@ -100,11 +90,11 @@ const PostList = ({
   };
 
   const PostItemProps = {
-    userData,
-    comments,
     accessToken,
-    posts,
-    currentPost,
+    userData, //
+    comments,
+    posts, //
+    currentPost, //
     setComments,
     setPosts,
     setCurrentPost,
@@ -116,19 +106,20 @@ const PostList = ({
       {posts.length ? (
         <PostListBox>
           {posts.map((post: Post) => {
-            const isSameAuthor = userData?.userId === currentPost?.userId;
-
+            const isSameAuthor = userData?.userId === post?.userId;
+            const isSamePost = currentPost?.postId === post.postId;
             return (
               <PostItemBox
                 key={post.postId}
                 onClick={() => handleClickPost(post)}
-                currentPost={currentPost?.postId === post.postId}
+                isSamePost={isSamePost}
               >
-                {currentPost?.postId === post.postId ? (
-                  <PostItem {...PostItemProps} post={post} isSameAuthor={isSameAuthor} />
-                ) : (
-                  <PostItem {...PostItemProps} post={post} />
-                )}
+                <PostItem
+                  {...PostItemProps}
+                  post={post}
+                  isSameAuthor={isSameAuthor}
+                  isSamePost={isSamePost}
+                />
               </PostItemBox>
             );
           })}

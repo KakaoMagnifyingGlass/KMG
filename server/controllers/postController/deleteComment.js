@@ -1,9 +1,11 @@
 const Comment = require("../../models/Comment");
+const Post = require("../../models/Post");
 
 const deleteComment = async (req, res) => {
   try {
     const { commentId } = req.params;
     const { userId } = res.locals;
+    const { postId } = req.params;
     console.log(`댓글 삭제 시도: userId - ${userId}, commentId - ${commentId}`);
 
     const comment = await Comment.findById(commentId);
@@ -18,6 +20,7 @@ const deleteComment = async (req, res) => {
     }
 
     await Comment.findByIdAndDelete(commentId);
+    await Post.findOneAndUpdate({ postId }, { $inc: { commentCount: -1 } });
 
     console.log(`댓글 삭제 완료: userId - ${userId}`);
     res.status(200).json({ message: "댓글이 삭제되었습니다." });

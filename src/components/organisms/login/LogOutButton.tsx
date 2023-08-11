@@ -5,11 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserLoginDataSlice } from "../../../store/reducer/userData/userLoginDataSlice";
 import { AccessToken } from "../../../@types/index.d";
 
-const LogOutContainer = styled.div``;
-
-const Button = styled.button`
-  background-color: transparent;
-  border: none;
+const LogOutBox = styled.div`
   cursor: pointer;
 `;
 
@@ -44,8 +40,8 @@ const LogOutButton = () => {
     );
   };
 
-  // LogOut Button 클릭 핸들러
-  const handleClickLogoutButton = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  // LogOut LogOutBox 클릭 핸들러
+  const handleClickLogoutButton = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     try {
       await postLogOut();
@@ -55,11 +51,7 @@ const LogOutButton = () => {
     handleLogOutDispatch();
   };
 
-  return (
-    <LogOutContainer>
-      <Button onClick={(e) => handleClickLogoutButton(e)}>로그아웃</Button>
-    </LogOutContainer>
-  );
+  return <LogOutBox onClick={(e) => handleClickLogoutButton(e)}>로그아웃</LogOutBox>;
 };
 
 export default LogOutButton;
