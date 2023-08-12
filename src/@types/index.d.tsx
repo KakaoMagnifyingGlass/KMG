@@ -92,6 +92,7 @@ export interface LoginFormData {
 }
 export interface LoginSuccessData extends UserData {
   accessToken: AccessToken;
+  expirationTime: number;
 }
 export type AccessToken = string;
 export interface Post {

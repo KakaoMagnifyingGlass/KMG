@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const EXPIRATION_TIME = "10s";
+const EXPIRATION_TIME = "1h";
 
 exports.createAccessToken = (userId, isRememberMe = false) => {
   const expiresIn = EXPIRATION_TIME;

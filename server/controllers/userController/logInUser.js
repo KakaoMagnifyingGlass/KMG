@@ -53,17 +53,18 @@ const logInUser = async (req, res) => {
       const accessToken = createAccessToken(userId, isRememberMe);
 
       // 자동 로그인에 체크한 경우 쿠키에 accessToken 저장
-      if (isRememberMe) {
-        console.log(`자동 로그인: accessToken 쿠키에 저장 userId - ${userId}`);
-        res.cookie("accessToken", accessToken);
-      }
+      // if (isRememberMe) {
+      //   console.log(`자동 로그인: accessToken 쿠키에 저장 userId - ${userId}`);
+      //   res.cookie("accessToken", accessToken);
+      // }
 
       console.log(`로그인 성공: userId - [${userId}]`);
       return res.status(200).json({
         message: "로그인되었습니다.",
         userId,
-        accessToken,
         nickname: userData.nickname,
+        accessToken,
+        expirationTime: isRememberMe ? 7 * 24 * 60 * 60 * 1000 : 1 * 60 * 60 * 1000,
       });
     }
 
@@ -76,7 +77,7 @@ const logInUser = async (req, res) => {
       requestedUser.refreshToken,
       process.env.ACCESS_TOKEN_SECRET_KEY
     );
-    const isRememberMeBefore = decodedTokenData.isRememberMe;
+    // const isRememberMeBefore = decodedTokenData.isRememberMe;
     console.log(`로그인 시도: userId - [${requestedUserId}]`);
 
     // 유효하지 않은 토큰이거나 로그인 기간이 만료된 경우
@@ -90,17 +91,17 @@ const logInUser = async (req, res) => {
     if (!isValidAccessToken && isValidRefreshToken) {
       console.log(`accessToken 재발급: A(${isValidRefreshToken}), R(${isValidRefreshToken})`);
       // newAccessToken 발급 및 쿠키 설정
-      const accessToken = createAccessToken(
-        requestedUserId,
-        process.env.ACCESS_TOKEN_SECRET_KEY,
-        isRememberMeBefore
-      );
+      // const accessToken = createAccessToken(
+      //   requestedUserId,
+      //   process.env.ACCESS_TOKEN_SECRET_KEY,
+      //   isRememberMeBefore
+      // );
 
-      const beforeRememberMeData = isRememberMeBefore;
-      if (isRememberMe || beforeRememberMeData) {
-        console.log(`자동 로그인: accessToken 쿠키에 저장 userId - ${requestedUserId}`);
-        res.cookie("accessToken", accessToken);
-      }
+      // const beforeRememberMeData = isRememberMeBefore;
+      // if (isRememberMe || beforeRememberMeData) {
+      //   console.log(`자동 로그인: accessToken 쿠키에 저장 userId - ${requestedUserId}`);
+      //   res.cookie("accessToken", accessToken);
+      // }
     }
 
     // 유효한 accessToken을 가지고 있는 경우 로그인
@@ -111,8 +112,9 @@ const logInUser = async (req, res) => {
     return res.status(200).json({
       message: "로그인되었습니다.",
       userId: requestedUser.userId,
-      accessToken,
       nickname: requestedUser.nickname,
+      accessToken,
+      expirationTime: isRememberMe ? 7 * 24 * 60 * 60 * 1000 : 1 * 60 * 60 * 1000,
     });
   } catch (error) {
     console.error(error);

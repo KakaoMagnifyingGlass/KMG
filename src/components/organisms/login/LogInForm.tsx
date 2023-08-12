@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FlexRowDiv } from "../../atoms/FlexDiv";
@@ -139,11 +139,19 @@ const LogInForm = () => {
     }
   };
 
+  // 브라우저에 accessToken 쿠키 저장
+  const setCookie = (name: string, value: string, expirationTime: number) => {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + expirationTime);
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  };
+
   // LogIn 성공 이벤트
   const handleLoginSuccess = (data: LoginSuccessData) => {
-    const { accessToken, nickname, userId } = data;
+    const { accessToken, expirationTime, nickname, userId } = data;
     dispatch(setUserLoginAccessTokenSlice(accessToken));
     dispatch(setUserLoginDataSlice({ nickname, userId }));
+    setCookie("accessToken", accessToken, expirationTime);
     window.alert("로그인되었습니다.");
     navigate("/");
   };
