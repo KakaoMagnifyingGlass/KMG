@@ -145,21 +145,20 @@ const PostItem = ({
   const [isPostEditing, setIsPostEditing] = useState<boolean>(false);
   const [commentCount, setCommentCount] = useState<number>(post.commentCount);
 
-  const clickEditPost = async (e: React.FormEvent<HTMLButtonElement>, post: Post | null) => {
+  const clickEditPost = async (e: React.FormEvent<HTMLButtonElement>, currentPost: Post | null) => {
     e.preventDefault();
     try {
-      if (post) {
-        const result = await axios.get(`/api/protected/posts/${post.postId}/edit/authorization`, {
+      if (currentPost) {
+        const result = await axios.get(`/api/protected/posts/${currentPost.postId}/edit/authorization`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        console.log(`${post.title} 게시물 수정 권한 확인이 완료되었습니다.`);
         setTitleEdit(post.title);
         setContentEdit(post.content);
         setIsPrivatePostEdit(post.isPrivate);
         setIsPostEditing(!isPostEditing);
-        return console.log(result);
+        return console.log(result.data.message);
       }
     } catch (error) {
       console.error(error);

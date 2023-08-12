@@ -18,7 +18,7 @@ postRouter.get("/:postId/comments", viewComments);
 
 // protected
 postRouter.post("/create", createPost);
-postRouter.post("/:postId/edit/authorization", checkPostAuthorization);
+postRouter.get("/:postId/edit/authorization", checkPostAuthorization);
 postRouter.put("/:postId/edit", editPost);
 postRouter.delete("/:postId/delete", deletePost);
 postRouter.post("/:postId/comments", createComment);

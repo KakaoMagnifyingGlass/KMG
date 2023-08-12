@@ -55,6 +55,7 @@ exports.authenticateToken = (accessTokenSecretKey) => async (req, res, next) => 
       res.locals = { accessToken };
     }
 
+    console.log("유효한 토큰 확인");
     // 다음 미들웨어로 유효한 accessToken을 소유한 user의 데이터 전달
     const { userId, nickname } = requestedUser;
     res.locals.userId = userId;

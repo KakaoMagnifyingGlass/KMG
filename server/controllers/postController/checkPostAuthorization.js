@@ -23,7 +23,6 @@ const checkPostAuthorization = async (req, res) => {
     console.log(`게시글 권한 확인 성공: postId - ${postId} userId - ${userId}`);
     res.status(200).json({
       message: `게시글 ${requestedPost.title}(postId:${requestedPost.postId})의 수정 권한 확인이 완료되었습니다.`,
-      requestedPost,
     });
   } catch (error) {
     console.error(error);
