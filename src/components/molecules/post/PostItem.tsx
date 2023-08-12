@@ -166,22 +166,20 @@ const PostItem = ({
     }
   };
 
-  const deletePost = async (e: React.FormEvent<HTMLButtonElement>, post: Post | null) => {
-    console.log(post, "??");
+  const deletePost = async (e: React.FormEvent<HTMLButtonElement>, currentPost: Post | null) => {
+    console.log(currentPost, "??");
     e.preventDefault();
     try {
-      if (post) {
-        const result = await axios.delete(`/api/protected/posts/${post.postId}/delete`, {
+      if (currentPost) {
+        const result = await axios.delete(`/api/protected/posts/${currentPost.postId}/delete`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
 
-        console.log(`${post.title} 게시물 삭제가 완료되었습니다.`);
-        const deletedPostId = result.data.post.postId;
-        setPosts(posts.filter((post: Post) => post.postId !== deletedPostId));
+        setPosts(posts.filter((post: Post) => post.postId !== currentPost.postId));
         setCurrentPost(null);
-        return console.log(result);
+        return console.log(result.data.message);
       }
     } catch (error) {
       console.error(error);

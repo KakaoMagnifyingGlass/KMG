@@ -25,14 +25,11 @@ const deletePost = async (req, res) => {
     const deletedPost = await Post.findOneAndDelete({ postId });
 
     // 게시물에 작성되어 있던 댓글 삭제
-    const deletedComments = await Comment.deleteMany({ postId });
-    const deletedComment = await Comment.deleteMany({});
-    console.log(deletedComment, "댓글무더기");
+    await Comment.deleteMany({ postId });
 
     console.log(`게시글 삭제 성공: postId - ${postId}`);
     res.status(200).json({
       message: `게시글 ${deletedPost.title}(postId:${deletedPost.postId})의 삭제가 완료되었습니다.`,
-      post: deletedPost,
     });
   } catch (error) {
     console.error(error);
