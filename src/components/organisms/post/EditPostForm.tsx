@@ -124,7 +124,7 @@ const EditPostForm = ({
         setPosts(copiedPosts);
         setCurrentPost(copiedPosts[editedPostIndex]);
         setIsPostEditing(false);
-        return console.log(result);
+        console.log("게시물 수정이 완료되었습니다.");
       }
     } catch (error) {
       console.error(error);

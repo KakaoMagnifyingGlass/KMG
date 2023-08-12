@@ -35,6 +35,7 @@ const LogOutButton = () => {
   const handleLogOutDispatch = () => {
     dispatch(setUserLoginDataSlice({ userId: "", nickname: "" }));
     dispatch(setUserLoginAccessTokenSlice(""));
+    console.log("로그아웃이 완료 되었습니다.");
   };
 
   // LogOut LogOutBox 클릭 핸들러

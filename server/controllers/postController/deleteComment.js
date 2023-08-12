@@ -23,7 +23,7 @@ const deleteComment = async (req, res) => {
     await Post.findOneAndUpdate({ postId }, { $inc: { commentCount: -1 } });
 
     console.log(`댓글 삭제 완료: userId - ${userId}`);
-    res.status(200).json({ message: "댓글이 삭제되었습니다." });
+    res.status(200).json({ message: "댓글의 삭제가 완료되었습니다." });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "서버 에러" });

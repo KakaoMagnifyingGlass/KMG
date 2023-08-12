@@ -115,7 +115,6 @@ const CommentList = ({
   accessToken,
   userData,
   currentPost,
-  isPostEditing,
   comments,
   setComments,
   commentCount,
@@ -128,11 +127,11 @@ const CommentList = ({
 
   const clickEditComment = async (e: React.FormEvent<HTMLButtonElement>, comment: Comment) => {
     e.preventDefault();
-    requestCheckCommentAuthorization(comment);
+    requestCheckCommentEditAuthorization(comment);
     successClickEditComment(comment);
   };
 
-  const requestCheckCommentAuthorization = async (comment: Comment) => {
+  const requestCheckCommentEditAuthorization = async (comment: Comment) => {
     try {
       await axios.get(
         `/api/protected/posts/${currentPost?.postId}/comments/${comment._id}/authorization`,
@@ -148,11 +147,11 @@ const CommentList = ({
   };
 
   const successClickEditComment = (comment: Comment) => {
-    console.log(`${comment._id} 댓글 수정 권한 확인이 완료되었습니다.`);
     setEditComment(comment.comment);
     setEditIsPrivateComment(comment.isPrivate);
-    setIsCommentEditing(!isPostEditing);
+    setIsCommentEditing(!isCommentEditing);
     setEditingCommentId(comment._id);
+    return console.log(`${comment._id} 댓글 수정 권한 확인이 완료되었습니다.`);
   };
 
   const handleDeletedComment = async (e: React.MouseEvent, comment: Comment) => {
@@ -171,7 +170,7 @@ const CommentList = ({
       const afterDeletedComments = copiedComments.filter((item) => item._id !== comment._id);
       setComments([...afterDeletedComments]);
       setCommentCount(commentCount - 1);
-      return console.log(result);
+      return console.log("댓글 삭제가 완료되었습니다.");
     } catch (error) {
       console.error(error);
     }
@@ -204,18 +203,16 @@ const CommentList = ({
         }
       );
 
-      console.log(`댓글 수정이 완료되었습니다.`);
       const editedCommentId = result.data.comment._id;
       const editedCommentIndex = comments.findIndex((item: any) => item._id === editedCommentId);
 
       const copiedComments = [...comments];
       copiedComments[editedCommentIndex] = {
         ...result.data.comment,
-        ...toEditCommentData,
       };
       setComments(copiedComments);
       setIsCommentEditing(false);
-      return console.log(result);
+      console.log(`댓글 수정이 완료되었습니다.`);
     } catch (error) {
       console.error(error);
     }

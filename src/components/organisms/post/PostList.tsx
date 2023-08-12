@@ -75,7 +75,8 @@ const PostList = ({ accessToken, posts, setPosts }: currentPostProps) => {
   const requestCommentsData = async (post: Post) => {
     try {
       const result = await axios.get(`/api/posts/${post.postId}/comments`);
-      const commentsData: Comment[] = result.data;
+      const commentsData: Comment[] = result.data.comments;
+      console.log(`${post.title} 게시물의 댓글 조회가 완료되었습니다.`);
       return commentsData;
     } catch (error) {
       console.error(error);

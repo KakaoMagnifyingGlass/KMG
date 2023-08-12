@@ -166,7 +166,6 @@ const PostItem = ({
   };
 
   const deletePost = async (e: React.FormEvent<HTMLButtonElement>, currentPost: Post | null) => {
-    console.log(currentPost, "??");
     e.preventDefault();
     try {
       if (currentPost) {
@@ -178,7 +177,7 @@ const PostItem = ({
 
         setPosts(posts.filter((post: Post) => post.postId !== currentPost.postId));
         setCurrentPost(null);
-        return console.log(result.data.message);
+        console.log("게시물 삭제가 완료되었습니다.");
       }
     } catch (error) {
       console.error(error);

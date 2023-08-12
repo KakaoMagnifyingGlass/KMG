@@ -28,9 +28,8 @@ const PostPage = () => {
     const loadInitialPosts = async () => {
       try {
         const result = await axios.get("/api/posts");
-        console.log(`게시물 조회가 완료되었습니다.`);
         setPosts(result.data.posts);
-        return console.log(result.data.posts);
+        console.log(`게시물 조회가 완료되었습니다.`);
       } catch (error) {
         console.error(error);
       }
