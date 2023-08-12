@@ -218,6 +218,9 @@ const CommentList = ({
     }
   };
 
+  const handleCancelEdit = () => {
+    setIsCommentEditing(false);
+  };
   return (
     <CommentContainer>
       <CommentUl>
@@ -251,14 +254,16 @@ const CommentList = ({
                       value={editComment}
                       onChange={(e) => setEditComment(e.target.value)}
                     />
-
                     <PublishForm
                       isChecked={editIsPrivateComment}
                       onCheckboxChange={(e: { target: { checked: any } }) =>
                         handleEditPrivateCommentChange(e.target.checked)
                       }
                       current="댓글 수정하기"
+                      cancelcurrent="수정 취소하기"
                       onSubmit={null}
+                      onCancel={handleCancelEdit}
+                      cancelBox={true}
                     />
                   </FormGroup>
                 </CommentFormContainer>

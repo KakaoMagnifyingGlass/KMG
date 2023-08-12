@@ -150,6 +150,9 @@ const EditPostForm = ({
           onCheckboxChange={(e: { target: { checked: any } }) => setIsPrivatePostEdit(e.target.checked)}
           current="수정하기"
           onSubmit={null}
+          cancelBox={true}
+          onCancel={() => setIsPostEditing(false)}
+          cancelcurrent="수정 취소하기"
         />
       </FormGroup>
     </FormContainer>

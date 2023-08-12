@@ -116,9 +116,12 @@ const CommentForm = ({
           handlePrivateCommentChange(e.target.checked)
         }
         current="댓글 작성하기"
+        cancelcurrent="수정 취소하기"
         onSubmit={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
           handleSubmitComment(e, currentPost, commentInput)
         }
+        onCancel={null}
+        cancelBox={false}
       />
     </CommentFormContainer>
   );

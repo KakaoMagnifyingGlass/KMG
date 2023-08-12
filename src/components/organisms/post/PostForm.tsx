@@ -135,6 +135,9 @@ const PostForm = ({ posts, setPosts, accessToken }: PostProps) => {
           onCheckboxChange={(e: { target: { checked: any } }) => setIsPrivateContent(e.target.checked)}
           current="글쓰기"
           onSubmit={null}
+          onCancel={null}
+          cancelBox={false}
+          cancelcurrent="수정 취소하기"
         />
       </FormGroup>
     </FormContainer>

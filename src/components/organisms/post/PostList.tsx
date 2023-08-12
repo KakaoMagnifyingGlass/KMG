@@ -92,10 +92,10 @@ const PostList = ({ accessToken, posts, setPosts }: currentPostProps) => {
 
   const PostItemProps = {
     accessToken,
-    userData, //
+    userData,
     comments,
-    posts, //
-    currentPost, //
+    posts,
+    currentPost,
     setComments,
     setPosts,
     setCurrentPost,

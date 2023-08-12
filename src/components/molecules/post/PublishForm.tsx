@@ -21,9 +21,10 @@ const Label = styled.label`
 `;
 
 const CheckBox = styled.input``;
-
+const SubmitButtonBox = styled.div``;
 const SubmitButton = styled.button`
   padding: 8px 12px;
+  margin-left: 10px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -42,18 +43,36 @@ interface PublishProps {
   onCheckboxChange: any;
   current: any;
   onSubmit: any;
+  onCancel: any;
+  cancelBox: boolean;
+  cancelcurrent: string;
 }
 
-const PublishForm = ({ isChecked, onCheckboxChange, onSubmit, current }: PublishProps) => {
+const PublishForm = ({
+  isChecked,
+  onCheckboxChange,
+  onSubmit,
+  current,
+  cancelcurrent,
+  cancelBox,
+  onCancel,
+}: PublishProps) => {
   return (
     <PublishBox>
       <CheckBoxWrapper>
         <Label>비밀글</Label>
         <CheckBox type="checkbox" checked={isChecked} onChange={onCheckboxChange} />
       </CheckBoxWrapper>
-      <SubmitButton type="submit" onClick={onSubmit}>
-        {current}
-      </SubmitButton>
+      <SubmitButtonBox>
+        <SubmitButton type="submit" onClick={onSubmit}>
+          {current}
+        </SubmitButton>
+        {cancelBox && (
+          <SubmitButton type="submit" onClick={onCancel}>
+            {cancelcurrent}
+          </SubmitButton>
+        )}
+      </SubmitButtonBox>
     </PublishBox>
   );
 };
