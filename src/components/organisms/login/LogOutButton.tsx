@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLoginDataSlice } from "../../../store/reducer/userData/userLoginDataSlice";
 import { AccessToken } from "../../../@types/index.d";
+import { setUserLoginAccessTokenSlice } from "../../../store/reducer/userData/userLoginAccessTokenSlice";
 
 const LogOutBox = styled.div`
   cursor: pointer;
@@ -32,22 +33,14 @@ const LogOutButton = () => {
 
   // LogOut 상태 업데이트
   const handleLogOutDispatch = () => {
-    dispatch(
-      setUserLoginDataSlice({
-        userId: "",
-        nickname: "",
-      })
-    );
+    dispatch(setUserLoginDataSlice({ userId: "", nickname: "" }));
+    dispatch(setUserLoginAccessTokenSlice(""));
   };
 
   // LogOut LogOutBox 클릭 핸들러
   const handleClickLogoutButton = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    try {
-      await postLogOut();
-    } catch (error) {
-      console.error(error);
-    }
+    await postLogOut();
     handleLogOutDispatch();
   };
 

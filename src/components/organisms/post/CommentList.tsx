@@ -226,13 +226,13 @@ const CommentList = ({
       <CommentUl>
         {comments.length ? (
           comments.map((comment: Comment) => (
-            <CommentItem key={comment._id}>
+            <CommentItem key={comment?._id}>
               <CommentBox>
                 <UserContainer>
                   <CurrentPostProfile />
                   <UserBox>
-                    <CommentAuthor>{comment.nickname}</CommentAuthor>
-                    <CommentTime> {displayCreatedAt(comment.createdAt)}</CommentTime>
+                    <CommentAuthor>{comment?.nickname}</CommentAuthor>
+                    <CommentTime> {displayCreatedAt(comment?.createdAt)}</CommentTime>
                   </UserBox>
                 </UserContainer>
                 {userData?.userId === comment?.userId && (

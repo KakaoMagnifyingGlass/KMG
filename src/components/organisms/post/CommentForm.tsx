@@ -83,7 +83,6 @@ const CommentForm = ({
     initializeCommentForm();
     setCommentCount(commentCount + 1);
     setComments([...comments, commentData]);
-    return console.log(commentData);
   };
 
   const handleSubmitComment = async (
@@ -92,10 +91,11 @@ const CommentForm = ({
     commentInput: string
   ) => {
     e.preventDefault();
-
     const result = await requestCreateComment(currentPost, commentInput);
     const commentData: Comment = result?.data.comment;
-    successCreateComment(commentData);
+    if (commentData) {
+      successCreateComment(commentData);
+    }
   };
 
   const handlePrivateCommentChange = (e: React.ChangeEvent<HTMLInputElement>) => {

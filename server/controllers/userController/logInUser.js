@@ -10,15 +10,16 @@ const logInUser = async (req, res) => {
 
   try {
     // user 데이터 확인
+    let { userId, password, isRememberMe } = req.body;
+
     let requestedAccessToken;
     if (req.headers && req.headers.cookie) {
       requestedAccessToken = getTokenFromCookie(req, res, "accessToken");
+      const decodedToken = jwt.decode(requestedAccessToken, process.env.ACCESS_TOKEN_SECRET_KEY);
+      const requestedUserId = decodedToken && decodedToken.userId;
+      userId = requestedUserId;
     }
-    // if (req.headers && req.headers.cookie) {
-    //   const requestedAccessToken = getTokenFromCookie(req, res, "accessToken");
-    // }
 
-    const { userId, password, isRememberMe } = req.body;
     const userData = await User.findOne({ userId });
 
     // accessToken 없이 새롭게 로그인하는 경우
@@ -49,7 +50,7 @@ const logInUser = async (req, res) => {
       console.log(`새로운 refreshToken 발급: userId - [${userId}]`);
 
       // accessToken 발급
-      const accessToken = createAccessToken(userId, process.env.ACCESS_TOKEN_SECRET_KEY, isRememberMe);
+      const accessToken = createAccessToken(userId, isRememberMe);
 
       // 자동 로그인에 체크한 경우 쿠키에 accessToken 저장
       if (isRememberMe) {
