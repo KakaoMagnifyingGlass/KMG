@@ -113,10 +113,10 @@ const FileDrop = ({ handleChangeFile }: DropZoneProps) => {
         <AttachmentBox>
           <DownloadTestFileButton
             as="a"
-            href="https://docs.google.com/uc?export=download&id=1GnniihnXFYXGTnDj7wyC1xKkwtPEuAks&confirm=t"
+            href="https://docs.google.com/uc?export=download&id=1VOWOaMGSOnCS9_sIq0tsA1DdCcMIIkD4&confirm=t"
             onClick={clickDownloadTestFile}
           >
-            다운로드 테스트 파일(MacOS)
+            다운로드 테스트 파일 (MacOS)
           </DownloadTestFileButton>
           <AttachmentButton onChange={handleChangeFile}>파일 첨부하기</AttachmentButton>
         </AttachmentBox>

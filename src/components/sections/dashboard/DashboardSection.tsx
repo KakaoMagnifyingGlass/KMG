@@ -196,7 +196,6 @@ const DashboardSection = () => {
     }
   }, []);
 
-  console.log("");
   return (
     <DashboardSectionContainer>
       <AsideBox>

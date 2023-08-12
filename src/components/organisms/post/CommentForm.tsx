@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { AccessToken } from "../../../@types/index.d";
+import { AccessToken, Comment, Post } from "../../../@types/index.d";
 import PublishForm from "../../molecules/post/PublishForm";
 
 const CommentFormContainer = styled.div`
@@ -28,46 +28,43 @@ const TextArea = styled.textarea`
   }
 `;
 
-interface CommentProps {
+interface CommentFormProps {
   accessToken: AccessToken;
-  currentPost: any;
-  comment: string;
-  setComment: any;
-  comments: any;
-  setComments: any;
+  currentPost: Post | null;
+  comments: Comment[];
+  setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
+  commentCount: number;
+  setCommentCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const CommentForm = ({
   accessToken,
   currentPost,
-  comment,
-  setComment,
   comments,
   setComments,
-}: CommentProps) => {
+  commentCount,
+  setCommentCount,
+}: CommentFormProps) => {
   const [isPrivateComment, setIsPrivateComment] = useState<boolean>(false);
+  const [commentInput, setCommentInput] = useState<string>("");
 
   const initializeCommentForm = () => {
-    setComment("");
+    setCommentInput("");
     setIsPrivateComment(false);
   };
 
   const handleWriteComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
-    setComment(e.target.value);
+    setCommentInput(e.target.value);
   };
 
-  const handleSubmitComment = async (
-    e: React.MouseEvent<HTMLButtonElement>,
-    currentPost: any,
-    comment: string
-  ) => {
-    e.preventDefault();
+  // 댓글 작성 post 요청 보내기
+  const requestCreateComment = async (currentPost: Post | null, commentInput: string) => {
     try {
       const result = await axios.post(
-        `/api/protected/posts/${currentPost.postId}/comments`,
+        `/api/protected/posts/${currentPost?.postId}/comments`,
         {
-          comment,
+          comment: commentInput,
           isPrivateComment,
         },
         {
@@ -76,13 +73,28 @@ const CommentForm = ({
           },
         }
       );
-
-      console.log(`${comment} 댓글 작성이 완료되었습니다.`);
-      initializeCommentForm();
-      setComments([...comments, result.data.comment]);
-      return console.log(result);
+      return result;
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const successCreateComment = (commentData: Comment) => {
+    initializeCommentForm();
+    setCommentCount(commentCount + 1);
+    setComments([...comments, commentData]);
+  };
+
+  const handleSubmitComment = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+    currentPost: Post | null,
+    commentInput: string
+  ) => {
+    e.preventDefault();
+    const result = await requestCreateComment(currentPost, commentInput);
+    const commentData: Comment = result?.data.comment;
+    if (commentData) {
+      successCreateComment(commentData);
     }
   };
 
@@ -94,7 +106,7 @@ const CommentForm = ({
   return (
     <CommentFormContainer>
       <TextArea
-        value={comment}
+        value={commentInput}
         onChange={(e) => handleWriteComment(e)}
         placeholder="댓글을 작성하세요"
       />
@@ -105,7 +117,7 @@ const CommentForm = ({
         }
         current="댓글 작성하기"
         onSubmit={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-          handleSubmitComment(e, currentPost, comment)
+          handleSubmitComment(e, currentPost, commentInput)
         }
       />
     </CommentFormContainer>

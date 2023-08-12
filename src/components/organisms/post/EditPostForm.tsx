@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import styled from "styled-components";
-import { AccessToken } from "../../../@types/index.d";
+import { AccessToken, Post } from "../../../@types/index.d";
 import PublishForm from "../../molecules/post/PublishForm";
 
 // 입력 폼 스타일
@@ -49,6 +49,12 @@ const Textarea = styled.textarea`
   resize: none;
 `;
 
+interface ToEditPostData {
+  title: string;
+  content: string;
+  isPrivateContent: boolean;
+}
+
 interface EditPostFormProps {
   currentPost: any;
   accessToken: AccessToken;
@@ -78,7 +84,7 @@ const EditPostForm = ({
   setContentEdit,
   setIsPrivatePostEdit,
 }: EditPostFormProps) => {
-  const requestEditPost = async (post: any, toEditPostData: any) => {
+  const requestEditPost = async (post: Post, toEditPostData: ToEditPostData) => {
     try {
       const result = await axios.put(
         `/api/protected/posts/${post.postId}/edit`,
@@ -95,7 +101,7 @@ const EditPostForm = ({
     }
   };
 
-  const editPost = async (e: React.FormEvent<HTMLFormElement>, post: any) => {
+  const editPost = async (e: React.FormEvent<HTMLFormElement>, currentPost: Post) => {
     e.preventDefault();
 
     const toEditPostData = {
@@ -105,10 +111,10 @@ const EditPostForm = ({
     };
 
     try {
-      const result = await requestEditPost(post, toEditPostData);
+      const result = await requestEditPost(currentPost, toEditPostData);
       if (result) {
         const editedPostId = result.data.post.postId;
-        const editedPostIndex = posts.findIndex((item: any) => item.postId === editedPostId);
+        const editedPostIndex = posts.findIndex((item: Post) => item.postId === editedPostId);
         const copiedPosts = [...posts];
         copiedPosts[editedPostIndex] = {
           ...result.data.post,
@@ -118,7 +124,7 @@ const EditPostForm = ({
         setPosts(copiedPosts);
         setCurrentPost(copiedPosts[editedPostIndex]);
         setIsPostEditing(false);
-        return console.log(result);
+        console.log("게시물 수정이 완료되었습니다.");
       }
     } catch (error) {
       console.error(error);

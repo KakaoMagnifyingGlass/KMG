@@ -31,7 +31,7 @@ const editComment = async (req, res) => {
 
     console.log(`댓글 수정 성공: commentId - ${commentId}`);
     res.status(200).json({
-      message: `게시글 ${updatedComment.title}(commentId:${updatedComment.commentId})의 수정이 완료되었습니다.`,
+      message: `댓글 ${updatedComment.title}(commentId:${updatedComment.commentId})의 수정이 완료되었습니다.`,
       comment: updatedComment,
     });
   } catch (error) {

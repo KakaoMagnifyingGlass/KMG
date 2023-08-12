@@ -79,7 +79,6 @@ const PostForm = ({ posts, setPosts, accessToken }: PostProps) => {
   // Create Post 요청 보내기
   const requestCreatePost = async (createPostData: CreatePostData) => {
     try {
-      console.log(createPostData);
       const result = await axios.post(
         "/api/protected/posts/create",
         { ...createPostData },
@@ -108,7 +107,7 @@ const PostForm = ({ posts, setPosts, accessToken }: PostProps) => {
       if (result) {
         setPosts([result.data.post, ...posts]);
         initializePostForm();
-        return console.log(result);
+        return console.log("게시물 작성이 완료되었습니다.");
       }
     } catch (error) {
       console.error(error);

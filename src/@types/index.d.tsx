@@ -92,11 +92,9 @@ export interface LoginFormData {
 }
 export interface LoginSuccessData extends UserData {
   accessToken: AccessToken;
+  expirationTime: number;
 }
-export type AccessToken = {
-  accessToken: string;
-};
-
+export type AccessToken = string;
 export interface Post {
   content: string;
   createdAt: string;
@@ -105,6 +103,7 @@ export interface Post {
   postId: number;
   title: string;
   userId: string;
+  commentCount: number;
   __v: number;
   _id: string;
 }
@@ -119,4 +118,8 @@ export interface Comment {
   userId: string;
   __v: number;
   _id: string;
+}
+
+export interface RememberMeData extends UserData {
+  accessToken: AccessToken;
 }

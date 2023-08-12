@@ -4,12 +4,9 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLoginDataSlice } from "../../../store/reducer/userData/userLoginDataSlice";
 import { AccessToken } from "../../../@types/index.d";
+import { setUserLoginAccessTokenSlice } from "../../../store/reducer/userData/userLoginAccessTokenSlice";
 
-const LogOutContainer = styled.div``;
-
-const Button = styled.button`
-  background-color: transparent;
-  border: none;
+const LogOutBox = styled.div`
   cursor: pointer;
 `;
 
@@ -36,30 +33,19 @@ const LogOutButton = () => {
 
   // LogOut 상태 업데이트
   const handleLogOutDispatch = () => {
-    dispatch(
-      setUserLoginDataSlice({
-        userId: "",
-        nickname: "",
-      })
-    );
+    dispatch(setUserLoginDataSlice({ userId: "", nickname: "" }));
+    dispatch(setUserLoginAccessTokenSlice(""));
+    console.log("로그아웃이 완료 되었습니다.");
   };
 
-  // LogOut Button 클릭 핸들러
-  const handleClickLogoutButton = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  // LogOut LogOutBox 클릭 핸들러
+  const handleClickLogoutButton = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    try {
-      await postLogOut();
-    } catch (error) {
-      console.error(error);
-    }
+    await postLogOut();
     handleLogOutDispatch();
   };
 
-  return (
-    <LogOutContainer>
-      <Button onClick={(e) => handleClickLogoutButton(e)}>로그아웃</Button>
-    </LogOutContainer>
-  );
+  return <LogOutBox onClick={(e) => handleClickLogoutButton(e)}>로그아웃</LogOutBox>;
 };
 
 export default LogOutButton;

@@ -9,23 +9,30 @@ import Wrapper from "./components/wrapper/Wrapper";
 import GlobalStyle from "./style/GlobalStyles";
 import Navigation from "./components/sections/navigation/Navigation";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { getTokenFromCookie } from "./module/common/getTokenFromCookie";
 import PostPage from "./components/pages/PostPage";
 import LogInForm from "./components/organisms/login/LogInForm";
-import { UserData } from "./@types/index.d";
 import UserPage from "./components/pages/UserPage";
 import SignUpForm from "./components/organisms/login/SignUpForm";
+import { useDispatch } from "react-redux";
+import { setUserLoginAccessTokenSlice } from "./store/reducer/userData/userLoginAccessTokenSlice";
+import { setUserLoginDataSlice } from "./store/reducer/userData/userLoginDataSlice";
+import { RememberMeData } from "./@types/index.d";
 
 function App() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const isDashboardPage = location.pathname === "/dashboard";
 
-  const [userData, setUserData] = useState<UserData | null>(null);
-  const [accessToken, setAccessToken] = useState<string>("");
-
   useEffect(() => {
+    const successValidToken = (data: RememberMeData) => {
+      const { accessToken, nickname, userId } = data;
+      dispatch(setUserLoginAccessTokenSlice(accessToken));
+      dispatch(setUserLoginDataSlice({ nickname, userId }));
+    };
+
     const cookieCheckForRememberLogin = async () => {
       const cookieAccessToken = getTokenFromCookie(document.cookie);
       if (cookieAccessToken) {
@@ -34,8 +41,9 @@ function App() {
             Authorization: `Bearer ${cookieAccessToken}`,
           },
         });
-        setAccessToken(accessToken);
-        return setUserData(result.data.data);
+        const { accessToken, nickname, userId } = result.data;
+        const rememberMeData = { accessToken, nickname, userId };
+        successValidToken(rememberMeData);
       }
     };
     (async () => cookieCheckForRememberLogin())();

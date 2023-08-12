@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
   createdAt: { type: String, default: Date.now().toLocaleString("ko-KR") },
+  commentCount: { type: Number, default: 0 },
   isPrivate: { type: Boolean, default: false },
 });
 
