@@ -8,10 +8,11 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import DashboardSideMenu from "../../sections/dashboard/DashboardSideMenu";
 import { useSelector } from "react-redux";
 import { NavProps } from "../../sections/navigation/Navigation";
-import { FlexCenterDiv, FlexColumnDiv } from "../../atoms/FlexDiv";
+import { FlexCenterDiv, FlexColumnDiv, FlexRowDiv } from "../../atoms/FlexDiv";
 import Paragraph from "../../atoms/Paragraph";
 import { zIndex } from "../../../style/specifiedCss/zIndex";
 import { UserData } from "../../../@types/index.d";
+import LogOutButton from "../login/LogOutButton";
 
 const NavSideBox = styled(FlexColumnDiv)<{ isSideMenuChatRoom: boolean }>`
   position: absolute;
@@ -26,6 +27,7 @@ const NavSideBox = styled(FlexColumnDiv)<{ isSideMenuChatRoom: boolean }>`
   z-index: ${zIndex.navSide};
 `;
 
+
 const TopContent = styled.div`
   padding: 0 20px 0 20px;
   display: flex;
@@ -33,6 +35,7 @@ const TopContent = styled.div`
   line-height: 7rem;
   border-bottom: 1px solid var(--border);
 `;
+
 
 const NavMenuIcon = styled(Icon)`
   display: none;
@@ -47,10 +50,12 @@ const NavMenuIcon = styled(Icon)`
   }
 `;
 
+
 const H2 = styled.div`
   width: 120px;
   transform: translateX(-50%);
 `;
+
 
 const PageLink = styled(FlexColumnDiv)`
   width: 100%;
@@ -69,19 +74,52 @@ const PageLink = styled(FlexColumnDiv)`
   }
 `;
 
+
+const UserBox = styled(FlexCenterDiv)`
+height: 10%;
+justify-content: center;
+font-size: 1.5rem;
+font-weight: 500;
+background-color: #f3f3f3;
+`;
+
+
+
+
+
+const LogOutAuth = styled(FlexRowDiv)`
+align-items: center;
+gap:10px;
+overflow:hidden;  
+`;
+
+
+const Profile = styled.img`
+ width: 40px;
+ height:40px;
+ border: 1px solid #ddd;
+ border-radius: 40px;
+`;
+
+
+
+
 const AnalysisBox = styled(FlexCenterDiv)`
   padding: 15px 0;
   gap: 10px;
 `;
+
 
 const AnalysisMenu = styled(Paragraph)`
   font-weight: 700;
   font-size: 2.2rem;
 `;
 
+
 const NavSideContainer = styled.div<{ isWideScreen?: Boolean }>`
   display: ${(props) => (props.isWideScreen ? "none" : "block")};
 `;
+
 
 const NavSideShadow = styled.div<{ isSideMenuVisible?: Boolean }>`
   position: absolute;
@@ -94,6 +132,7 @@ const NavSideShadow = styled.div<{ isSideMenuVisible?: Boolean }>`
   opacity: ${(props) => (props.isSideMenuVisible ? "0.6" : "0")};
   z-index: ${zIndex.navSideShadow};
 `;
+
 
 interface NavSideMenuProps extends NavProps {
   isWideScreen: boolean;
@@ -108,6 +147,8 @@ const NavSide: React.FC<NavSideMenuProps> = ({
   isDarkMode,
   isAnalyzedMessagesExist,
 }) => {
+  const userData = useSelector((state: { userLoginDataSlice: UserData }) => state.userLoginDataSlice);
+
   const isSideMenuChatRoom = useSelector(
     (state: { isSideMenuChatRoomSelectSlice: boolean }) => state.isSideMenuChatRoomSelectSlice
   );
@@ -120,6 +161,7 @@ const NavSide: React.FC<NavSideMenuProps> = ({
     if (isSideMenuChatRoom) {
       bodyStyle.position = "fixed";
       bodyStyle.top = `-${scrollY}px`;
+
       bodyStyle.overflowY = "scroll";
       bodyStyle.width = "100%";
 
@@ -154,6 +196,8 @@ const NavSide: React.FC<NavSideMenuProps> = ({
           </H2>
         </TopContent>
         <PageLink>
+          
+         
           <Link to="/attachment#analysis" onClick={closeMenu}>
             <AnalysisBox>
               <AnalysisMenu>분석하기</AnalysisMenu>
@@ -178,6 +222,23 @@ const NavSide: React.FC<NavSideMenuProps> = ({
           )}
         </PageLink>
         {isAnalyzedMessagesExist && !isWideScreen && <DashboardSideMenu isSideMenu />}
+
+        <UserBox>
+              {userData.userId ? (
+                 <LogOutAuth onClick={closeMenu}>
+                 <Profile src={`${process.env.PUBLIC_URL}/images/user.jpg`} className="w-40 h-40" alt="" />
+                 <LogOutButton />
+                 </LogOutAuth>
+               
+              ) : (
+              
+                <Link to="/users/login" onClick={closeMenu}>
+                    로그인
+                  </Link>
+                  
+              
+              )}
+            </UserBox>
       </NavSideBox>
       <NavSideShadow onClick={closeMenu} isSideMenuVisible={isSideMenuVisible} />
     </NavSideContainer>
