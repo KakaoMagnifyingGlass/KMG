@@ -76,7 +76,7 @@ const PageLink = styled(FlexColumnDiv)`
 
 
 const UserBox = styled(FlexCenterDiv)`
-height: 10%;
+height: 60px;
 justify-content: center;
 font-size: 1.5rem;
 font-weight: 500;
@@ -229,14 +229,10 @@ const NavSide: React.FC<NavSideMenuProps> = ({
                  <Profile src={`${process.env.PUBLIC_URL}/images/user.jpg`} className="w-40 h-40" alt="" />
                  <LogOutButton />
                  </LogOutAuth>
-               
               ) : (
-              
                 <Link to="/users/login" onClick={closeMenu}>
                     로그인
                   </Link>
-                  
-              
               )}
             </UserBox>
       </NavSideBox>
